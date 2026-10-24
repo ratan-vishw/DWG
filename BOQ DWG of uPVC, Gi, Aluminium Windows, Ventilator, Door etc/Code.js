@@ -4,10 +4,31 @@
  */
 
 function doGet(e) {
-  return HtmlService.createHtmlOutputFromFile('Index')
-    .setTitle('uPVC CAD Drawing & BOQ Image Creator')
-    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL)
-    .addMetaTag('viewport', 'width=device-width, initial-scale=1');
+  try {
+    return HtmlService.createTemplateFromFile('Index')
+      .evaluate()
+      .setTitle('uPVC CAD & Parametric BIM Fenestration Studio')
+      .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL)
+      .addMetaTag('viewport', 'width=device-width, initial-scale=1');
+  } catch (err) {
+    // Fallback if template evaluation is not needed
+    return HtmlService.createHtmlOutputFromFile('Index')
+      .setTitle('uPVC CAD & Parametric BIM Fenestration Studio')
+      .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL)
+      .addMetaTag('viewport', 'width=device-width, initial-scale=1');
+  }
+}
+
+/**
+ * Modular file inclusion helper for Google Apps Script
+ * Allows Index.html to include modular files (dataBase, cadEngine, dwgIo)
+ */
+function include(filename) {
+  try {
+    return HtmlService.createHtmlOutputFromFile(filename).getContent();
+  } catch (e) {
+    return '/* Included file not found: ' + filename + ' */';
+  }
 }
 
 /**

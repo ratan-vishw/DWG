@@ -778,6 +778,61 @@
                 georgianBars: '2x3',
                 georgianCols: 2,
                 georgianRows: 3
+            },
+            // Frameless Shower & Glass Partitions (Sketches + Hafele Catalog)
+            {
+                id: 'SH1',
+                category: 'shower',
+                isPdf: true,
+                name: 'SH1 - 2-Bay Glass Partition w/ Reinforcement Rod (27"+45" × 8\')',
+                type: 'shower_2bay_rod',
+                code: 'SH1',
+                width: 1829,
+                height: 2438,
+                transomHeight: 2438,
+                mullionWidth: 686,
+                profileColor: '#f8fafc',
+                colorName: 'WHITE',
+                profileSeries: 'HAFELE - Frameless Glass Fittings (Ø19mm Header & SS304 Patch)',
+                glassType: '10mm Clear Toughened Glass',
+                weight: 111.45,
+                desc: '27"+45" × 8\' w/ Header Rod'
+            },
+            {
+                id: 'SH2',
+                category: 'shower',
+                isPdf: true,
+                name: 'SH2 - Stepped 2-Bay Glass Partition (27"×78" Door + 45"×110" Fix)',
+                type: 'shower_2bay_stepped',
+                code: 'SH2',
+                width: 1829,
+                height: 2794,
+                transomHeight: 1981,
+                mullionWidth: 686,
+                profileColor: '#f8fafc',
+                colorName: 'WHITE',
+                profileSeries: 'HAFELE - Frameless Glass Fittings (Ø19mm Header & SS304 Patch)',
+                glassType: '10mm Clear Toughened Glass',
+                weight: 113.88,
+                desc: 'Stepped 78"/110" Partition'
+            },
+            {
+                id: 'SH3',
+                category: 'shower',
+                isPdf: true,
+                name: 'SH3 - Hafele 1-Door & 2-Fixed Panel Layout',
+                type: 'shower_3bay_hafele',
+                code: 'SH3',
+                width: 2000,
+                height: 2100,
+                transomHeight: 2100,
+                mullionWidth: 700,
+                profileColor: '#f8fafc',
+                colorName: 'WHITE',
+                profileSeries: 'HAFELE - Frameless Glass Fittings (Ø19mm Header & SS304 Patch)',
+                glassType: '10mm Clear Toughened Glass',
+                weight: 105.0,
+                desc: 'Hafele 1-Door + 2-Fixed'
             }
     ];
 
@@ -789,7 +844,8 @@
         { id: 'VEKA_I60', name: 'Veka - I 60 Sliding Series', type: 'sliding', frameDepth: 60, outerThick: 60, sashThick: 66 },
         { id: 'REHAU_EURO', name: 'REHAU - Euro-Design 60 Plus', type: 'casement', frameDepth: 60, outerThick: 60, sashThick: 70 },
         { id: 'PROMINANCE_PREMIUM', name: 'Prominance - 2.5 Track Heavy Duty', type: 'sliding', frameDepth: 88, outerThick: 65, sashThick: 72 },
-        { id: 'ALU_SLIM', name: 'Minimal Slim Aluminium Profile', type: 'all', frameDepth: 45, outerThick: 45, sashThick: 55 }
+        { id: 'ALU_SLIM', name: 'Minimal Slim Aluminium Profile', type: 'all', frameDepth: 45, outerThick: 45, sashThick: 55 },
+        { id: 'HAFELE_FRAMELESS', name: 'HAFELE - Frameless Glass Fittings (Ø19mm Header & SS304 Patch)', type: 'shower', frameDepth: 19, outerThick: 4, sashThick: 0 }
     ];
 
     /**
@@ -798,6 +854,9 @@
     const GLASS_OPTIONS = [
         { id: '5MM_CLEAR_TOUGH', name: '5mm Clear Toughened Glass', thickness: 5, weightPerSqM: 12.5, uValue: 5.7 },
         { id: '5MM_CLEAR_FLOAT', name: '5mm Clear Float Glass', thickness: 5, weightPerSqM: 12.5, uValue: 5.8 },
+        { id: '8MM_CLEAR_TOUGH', name: '8mm Clear Toughened Glass', thickness: 8, weightPerSqM: 20.0, uValue: 5.6 },
+        { id: '10MM_CLEAR_TOUGH', name: '10mm Clear Toughened Glass', thickness: 10, weightPerSqM: 25.0, uValue: 5.5 },
+        { id: '12MM_CLEAR_TOUGH', name: '12mm Clear Toughened Glass', thickness: 12, weightPerSqM: 30.0, uValue: 5.4 },
         { id: '6MM_TINTED_GREEN', name: '6mm Light Green Tinted Float', thickness: 6, weightPerSqM: 15.0, uValue: 5.5 },
         { id: 'DGU_5_12A_5', name: 'DGU 22mm (5mm + 12A + 5mm) Double Glazed', thickness: 22, weightPerSqM: 25.0, uValue: 2.8 },
         { id: 'FROSTED_PINHEAD', name: '5mm Frosted / Pinhead Obscure Glass', thickness: 5, weightPerSqM: 12.5, uValue: 5.8 },
@@ -1046,7 +1105,11 @@
                 vent_wide_fan: 'V3',
                 vent_louver_only: 'VL1',
                 vent_fan_only: 'VF1',
-                vent_top_hung: 'VT1'
+                vent_top_hung: 'VT1',
+                // Frameless Shower & Glass Partitions
+                shower_2bay_rod: 'SH1',
+                shower_2bay_stepped: 'SH2',
+                shower_3bay_hafele: 'SH3'
             };
             return codes[type] || 'CW1';
         },
@@ -1145,7 +1208,8 @@
                 'casement_top_hung', 'tilt_and_turn', 'casement_tower_4bay', 'fixed_window', 'fixed_2bay', 'fixed_3bay',
                 'fixed_georgian', 'casement_door', 'casement_door_midrail', 'double_door_french', 'door_with_transom',
                 'sliding_2track', 'sliding_3track', 'sliding_3track_3sash', 'sliding_4panel', 'sliding_transom',
-                'vent_louver_fan', 'vent_double_bay', 'vent_double_bay_fix', 'vent_wide_fan', 'vent_louver_only', 'vent_fan_only', 'vent_top_hung'
+                'vent_louver_fan', 'vent_double_bay', 'vent_double_bay_fix', 'vent_wide_fan', 'vent_louver_only', 'vent_fan_only', 'vent_top_hung',
+                'shower_2bay_rod', 'shower_2bay_stepped', 'shower_3bay_hafele'
             ];
 
             function normalizeType(inputStr) {
@@ -1153,6 +1217,10 @@
                 const s = inputStr.trim().toLowerCase().replace(/[-_]+/g, ' ');
                 const rawKey = inputStr.trim().toLowerCase().replace(/\s+/g, '_');
                 if (validTypes.includes(rawKey)) return rawKey;
+
+                if (/stepped|78.*110|110.*78|sh2/i.test(s)) return 'shower_2bay_stepped';
+                if (/3\s*bay.*shower|hafele.*3|hafele|1\s*door.*2\s*fix|sh3/i.test(s)) return 'shower_3bay_hafele';
+                if (/reinforcement|header\s*rod|header\s*bar|2\s*bay.*shower|shower|partition|sh1/i.test(s)) return 'shower_2bay_rod';
 
                 if (/4\s*panel|oxxo|center\s*open|patio\s*door|sliding\s*door|french\s*slid/i.test(s)) return 'sliding_4panel';
                 if (/3\s*sash/i.test(s)) return 'sliding_3track_3sash';

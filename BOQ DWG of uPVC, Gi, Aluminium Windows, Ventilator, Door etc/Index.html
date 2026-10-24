@@ -1245,8 +1245,358 @@ opacity: 1;
             }
         }
 
-    </style>
+    
+/* ==========================================================================
+   PHASE 1 & 2: CAD & BIM FENESTRATION STUDIO STYLES
+   ========================================================================== */
+
+/* Top Application Header Bar & Mode Switcher */
+.app-header-bar {
+    height: 48px;
+    background: #0f1622;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    z-index: 50;
+    flex-shrink: 0;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand-title-main {
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    background: linear-gradient(135deg, #ffffff, #60a5fa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.brand-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: rgba(37, 99, 235, 0.2);
+    color: #60a5fa;
+    border: 1px solid rgba(37, 99, 235, 0.4);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.mode-switcher {
+    display: flex;
+    background: #090d14;
+    padding: 3px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    gap: 2px;
+}
+
+.mode-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.76rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.mode-btn:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.mode-btn.active {
+    background: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.header-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 11px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 0.74rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.header-action-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #3b82f6;
+}
+
+/* CAD Drafting Ribbon Bar */
+.cad-ribbon-bar {
+    height: 40px;
+    background: #111827;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    gap: 6px;
+    z-index: 20;
+    flex-shrink: 0;
+    overflow-x: auto;
+}
+
+.ribbon-tool-group {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.ribbon-separator {
+    width: 1px;
+    height: 22px;
+    background: var(--border-color);
+    margin: 0 6px;
+}
+
+.ribbon-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 9px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.12s ease;
+    white-space: nowrap;
+}
+
+.ribbon-btn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+}
+
+.ribbon-btn.active {
+    background: rgba(37, 99, 235, 0.25);
+    border-color: #3b82f6;
+    color: #60a5fa;
+}
+
+.ribbon-btn.danger:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+    color: #f87171;
+}
+
+.ribbon-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background: #090d14;
+    color: var(--text-muted);
+    font-size: 0.70rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+}
+
+.ribbon-toggle-btn.active {
+    border-color: #10b981;
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.ribbon-toggle-btn .indicator-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #475569;
+}
+
+.ribbon-toggle-btn.active .indicator-dot {
+    background: #10b981;
+    box-shadow: 0 0 6px #10b981;
+}
+
+/* Bottom CAD Status & Command Bar */
+.cad-statusbar {
+    height: 32px;
+    background: #090d14;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 14px;
+    font-size: 0.72rem;
+    font-family: 'JetBrains Mono', monospace;
+    z-index: 20;
+    flex-shrink: 0;
+}
+
+.cad-status-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.cmd-prompt-label {
+    color: #38bdf8;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.cad-cmd-input {
+    background: transparent;
+    border: none;
+    color: #f1f5f9;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    outline: none;
+    flex: 1;
+    padding: 2px 4px;
+}
+
+.cad-cmd-input::placeholder {
+    color: #475569;
+}
+
+.cad-status-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cad-status-pill {
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.cad-status-pill.highlight {
+    color: #10b981;
+    font-weight: 600;
+}
+
+/* BOQ Cutlist & Quotation Full-Sheet View */
+.boq-schedule-view {
+    position: absolute;
+    top: 48px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #090d14;
+    z-index: 40;
+    display: none;
+    flex-direction: column;
+    padding: 24px;
+    overflow-y: auto;
+}
+
+.boq-schedule-view.active {
+    display: flex;
+}
+
+.boq-sheet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.boq-sheet-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    background: var(--bg-panel);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.boq-sheet-table th {
+    background: #182232;
+    padding: 10px 14px;
+    text-align: left;
+    color: var(--text-secondary);
+    font-weight: 700;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.boq-sheet-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    color: var(--text-primary);
+}
+
+.boq-summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.boq-summary-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 14px 18px;
+}
+
+.boq-summary-card .label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.boq-summary-card .val {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #60a5fa;
+    font-family: 'JetBrains Mono', monospace;
+}
+</style>
     <script src="dataBase.js"></script>
+    <script src="cadEngine.js"></script>
+    <script src="dwgIo.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </head>
 
@@ -1389,6 +1739,11 @@ opacity: 1;
                                         <option value="fixed_3bay">3-Bay Fixed Window (Two Mullions)</option>
                                         <option value="fixed_georgian">Fixed Window with Georgian Grid</option>
                                     </optgroup>
+                                    <optgroup label="Frameless Shower & Glass Partitions (Hafele)">
+                                        <option value="shower_2bay_rod">2-Bay Partition w/ Reinforcement Rod (27"+45" × 8')</option>
+                                        <option value="shower_2bay_stepped">2-Bay Stepped Partition (27"×78" Door + 45"×110" Fix)</option>
+                                        <option value="shower_3bay_hafele">Hafele 3-Bay (1 Door + 2 Fixed Panels w/ Header Bar)</option>
+                                    </optgroup>
                                 </select>
                             </div>
 
@@ -1402,6 +1757,7 @@ opacity: 1;
                                     <option value="REHAU - Euro-Design 60 Plus">REHAU - Euro-Design 60 Plus</option>
                                     <option value="Prominance - 2.5 Track Heavy Duty">Prominance - 2.5 Track Heavy Duty (88mm)</option>
                                     <option value="Minimal Slim Aluminium Profile">Minimal Slim Aluminium Profile (45mm)</option>
+                                    <option value="HAFELE - Frameless Glass Fittings (Ø19mm Header & SS304 Patch)">HAFELE - Frameless Glass Fittings (Ø19mm Header & SS304 Patch)</option>
                                 </select>
                             </div>
 
@@ -1411,6 +1767,9 @@ opacity: 1;
                                     <option value="5mm Clear Toughened">5mm Clear Toughened Glass</option>
                                     <option value="5mm Clear Float">5mm Clear Float Glass</option>
                                     <option value="6 MM CLEAR TOUGHENED GLASS">6mm Clear Toughened Glass</option>
+                                    <option value="8mm Clear Toughened Glass">8mm Clear Toughened Glass (Hafele 950.28.200)</option>
+                                    <option value="10mm Clear Toughened Glass">10mm Clear Toughened Glass (Hafele 950.28.201)</option>
+                                    <option value="12mm Clear Toughened Glass">12mm Clear Toughened Glass (Hafele 950.28.202)</option>
                                     <option value="6mm Light Green Tinted Float">6mm Light Green Tinted Float</option>
                                     <option value="DGU 22mm (5mm + 12A + 5mm) Double Glazed">DGU 22mm (5mm + 12A + 5mm) Double Glazed</option>
                                     <option value="5mm Frosted / Pinhead Obscure Glass">5mm Frosted / Pinhead Obscure Glass</option>
@@ -1523,6 +1882,7 @@ opacity: 1;
                         <button class="category-pill" data-cat="doors">Doors</button>
                         <button class="category-pill" data-cat="ventilator">Ventilators</button>
                         <button class="category-pill" data-cat="fixed">Fixed Glass</button>
+                        <button class="category-pill" data-cat="shower">Shower / Partitions</button>
                     </div>
 
                     <div class="preset-grid" id="presetContainer">
@@ -1622,6 +1982,71 @@ opacity: 1;
 
         <!-- Canvas Preview Stage -->
         <main class="preview-stage">
+            <!-- CAD DRAFTING RIBBON BAR -->
+            <div class="cad-ribbon-bar" id="cadRibbonBar">
+                <div class="ribbon-tool-group">
+                    <button class="ribbon-btn active" id="toolSelect" data-tool="select" title="Select / Hit-Test Entity (ESC)">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l7 18 3-7 7-3L3 3z"></path></svg>
+                        <span>Select</span>
+                    </button>
+                    <button class="ribbon-btn" id="toolPan" data-tool="pan" title="Pan Viewport (Middle Mouse or Space+Drag)">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="6" x2="12" y2="18"></line><line x1="6" y1="12" x2="18" y2="12"></line></svg>
+                        <span>Pan</span>
+                    </button>
+                </div>
+                <div class="ribbon-separator"></div>
+                <div class="ribbon-tool-group">
+                    <button class="ribbon-btn" id="toolLine" data-tool="line" title="Draw 2D Line (L)">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="21" x2="21" y2="3"></line></svg>
+                        <span>Line (L)</span>
+                    </button>
+                    <button class="ribbon-btn" id="toolPolyline" data-tool="polyline" title="Draw Polyline (PL)">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 17 9 7 15 15 21 5"></polyline></svg>
+                        <span>Polyline (PL)</span>
+                    </button>
+                    <button class="ribbon-btn" id="toolRect" data-tool="rect" title="Draw Rectangle (REC)">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                        <span>Rect (REC)</span>
+                    </button>
+                    <button class="ribbon-btn" id="toolCircle" data-tool="circle" title="Draw Circle (C)">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle></svg>
+                        <span>Circle (C)</span>
+                    </button>
+                    <button class="ribbon-btn" id="toolDim" data-tool="dim" title="Add Linear Dimension (DIM)">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="3" y2="18"></line><line x1="21" y1="6" x2="21" y2="18"></line></svg>
+                        <span>Dim (DIM)</span>
+                    </button>
+                    <button class="ribbon-btn" id="toolText" data-tool="text" title="Add Text Annotation (T)">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="12" y1="4" x2="12" y2="20"></line></svg>
+                        <span>Text (T)</span>
+                    </button>
+                </div>
+                <div class="ribbon-separator"></div>
+                <div class="ribbon-tool-group">
+                    <button class="ribbon-toggle-btn active" id="btnToggleOsnap" title="Toggle Object Snap (OSNAP)">
+                        <span class="indicator-dot"></span>
+                        <span>OSNAP</span>
+                    </button>
+                    <button class="ribbon-toggle-btn" id="btnToggleOrtho" title="Toggle Orthogonal Lock (F8)">
+                        <span class="indicator-dot"></span>
+                        <span>ORTHO (F8)</span>
+                    </button>
+                    <button class="ribbon-toggle-btn active" id="btnToggleGrid" title="Toggle Millimeter Grid Snap">
+                        <span class="indicator-dot"></span>
+                        <span>GRID</span>
+                    </button>
+                </div>
+                <div class="ribbon-separator"></div>
+                <div class="ribbon-tool-group">
+                    <button class="ribbon-btn danger" id="btnDeleteSelected" title="Delete Selected Entity (DEL)">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                        <span>Delete</span>
+                    </button>
+                    <button class="ribbon-btn" id="btnClearCustom" title="Clear all user-drawn custom CAD entities">
+                        <span>Clear All</span>
+                    </button>
+                </div>
+            </div>
 
             <!-- Stage Toolbar -->
             <!-- Viewport with Interactive Canvas -->
@@ -1633,7 +2058,67 @@ opacity: 1;
 
             </main>
         <!-- Right Side Vertical Toolbar - Grouped & Intuitive -->
-        <aside class="right-toolbar">
+        <!-- 3. BOQ SCHEDULE & CUTLIST FULL-SHEET VIEW -->
+    <div class="boq-schedule-view" id="boqScheduleView">
+        <div class="boq-sheet-header">
+            <div>
+                <h1 style="font-size:1.4rem; font-weight:800; color:white; margin-bottom:4px;">Project BOQ Schedule & Cutlist Specification</h1>
+                <span style="font-size:0.78rem; color:var(--text-muted);">Compiled fabrication cut sizes, glass specs, hardware BOM and total quotation metrics</span>
+            </div>
+            <div style="display:flex; gap:10px;">
+                <button class="header-action-btn" id="btnPrintBOQ" style="background:#2563eb; color:white; border-color:#3b82f6;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                    <span>Print Quotation Sheet</span>
+                </button>
+                <button class="header-action-btn" id="btnCloseBOQView">
+                    <span>Back to Designer</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="boq-summary-cards">
+            <div class="boq-summary-card">
+                <div class="label">Total Units</div>
+                <div class="val" id="boqTotalUnits">0</div>
+            </div>
+            <div class="boq-summary-card">
+                <div class="label">Total Glass Area</div>
+                <div class="val" id="boqTotalArea">0.00 Sq.Ft</div>
+            </div>
+            <div class="boq-summary-card">
+                <div class="label">Estimated Weight</div>
+                <div class="val" id="boqTotalWeight">0.0 KG</div>
+            </div>
+            <div class="boq-summary-card">
+                <div class="label">Profile Extrusions</div>
+                <div class="val" id="boqTotalProfiles">0.0 R.Mtr</div>
+            </div>
+        </div>
+
+        <table class="boq-sheet-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Mark</th>
+                    <th>Type Description</th>
+                    <th>Width (mm)</th>
+                    <th>Height (mm)</th>
+                    <th>Qty</th>
+                    <th>Unit Area (Sq.Ft)</th>
+                    <th>Total Area (Sq.Ft)</th>
+                    <th>Est. Weight</th>
+                    <th>Series & Finish</th>
+                    <th>Glass Specification</th>
+                </tr>
+            </thead>
+            <tbody id="boqSheetTableBody"></tbody>
+        </table>
+    </div>
+
+    <!-- Hidden CAD File Input for .DWG and .DXF -->
+    <input type="file" id="cadFileInput" accept=".dwg, .dxf" style="display:none;">
+
+    <aside class="right-toolbar">
             <!-- GROUP 1: EXPORT -->
             <div class="right-group-label">Export</div>
             <button class="btn-right btn-primary-action" id="btnDownloadPNG" title="Download High-Res BOQ Image (300 DPI)">
@@ -1646,6 +2131,18 @@ opacity: 1;
                 <div class="btn-right-inner">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                     <span>Copy Image</span>
+                </div>
+            </button>
+            <button class="btn-right btn-accent-action" id="btnRightExportDXF" title="Export AutoCAD 1:1 Metric DXF File">
+                <div class="btn-right-inner">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    <span style="color:#10b981; font-weight:700;">Export DXF (1:1)</span>
+                </div>
+            </button>
+            <button class="btn-right" id="btnRightOpenDWG" title="Open .DWG or .DXF File in 2D CAD Studio">
+                <div class="btn-right-inner">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                    <span>Open DWG / DXF</span>
                 </div>
             </button>
             <button class="btn-right" id="btnExportSVG" title="Export Scalable Vector SVG">
@@ -1919,765 +2416,36 @@ opacity: 1;
          */
 
         // Preset configurations directly extracted from user's provided PDF + full industry catalog
-        const PRESETS = [
-            // PDF - Winframe & Magnesta Quotes
-            {
-                id: 'W1',
-                category: 'casement',
-                isPdf: true,
-                name: 'W1 - Casement w/ Transom',
-                type: 'casement_transom',
-                code: 'W1',
-                width: 925,
-                height: 1525,
-                transomHeight: 450,
-                mullionWidth: 450,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'OKOTECH - O7 CASEMENT SERIES',
-                glassType: '5mm Clear Toughened',
-                weight: 29.412,
-                desc: 'Casement + Top Fix'
-            },
-            {
-                id: 'W2',
-                category: 'fixed',
-                isPdf: true,
-                name: 'W2 - Fix Window',
-                type: 'fixed_window',
-                code: 'W2',
-                width: 1600,
-                height: 775,
-                transomHeight: 450,
-                mullionWidth: 800,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'OKOTECH - O7 CASEMENT SERIES',
-                glassType: '5mm Clear Toughened',
-                weight: 21.297,
-                desc: 'Single Fixed Glass'
-            },
-            {
-                id: 'D1',
-                category: 'doors',
-                isPdf: true,
-                name: 'D1 - Casement Door',
-                type: 'casement_door',
-                code: 'D1',
-                width: 925,
-                height: 2450,
-                transomHeight: 450,
-                mullionWidth: 450,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'OKOTECH - O7 CASEMENT SERIES',
-                glassType: '6 MM CLEAR TOUGHENED GLASS',
-                weight: 55.756,
-                desc: 'Full Casement Door'
-            },
-            {
-                id: 'D2',
-                category: 'doors',
-                isPdf: true,
-                name: 'D2 - Casement Door 900',
-                type: 'casement_door',
-                code: 'D2',
-                width: 900,
-                height: 2450,
-                transomHeight: 450,
-                mullionWidth: 450,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'OKOTECH - O7 CASEMENT SERIES',
-                glassType: '6 MM CLEAR TOUGHENED GLASS',
-                weight: 54.65,
-                desc: '900mm Casement Door'
-            },
-            {
-                id: 'W3',
-                category: 'sliding',
-                isPdf: true,
-                name: 'W3 - 3-Track Sliding (1200)',
-                type: 'sliding_3track',
-                code: 'W3',
-                width: 1200,
-                height: 1825,
-                transomHeight: 450,
-                mullionWidth: 600,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'OKOTECH - O7 SLIDING SERIES',
-                glassType: '5mm Clear Toughened',
-                weight: 65.86,
-                desc: '3-Track Sliding + Mesh'
-            },
-            {
-                id: 'W4',
-                category: 'sliding',
-                isPdf: true,
-                name: 'W4 - 3-Track Sliding (1825)',
-                type: 'sliding_3track',
-                code: 'W4',
-                width: 1825,
-                height: 2450,
-                transomHeight: 450,
-                mullionWidth: 913,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'OKOTECH - O7 SLIDING SERIES',
-                glassType: '6 MM CLEAR TOUGHENED GLASS',
-                weight: 126.03,
-                desc: '1825x2450 3-Track Slider'
-            },
-            {
-                id: 'W5',
-                category: 'sliding',
-                isPdf: true,
-                name: 'W5 - 3-Track Sliding (2050)',
-                type: 'sliding_3track',
-                code: 'W5',
-                width: 2050,
-                height: 2400,
-                transomHeight: 1200,
-                mullionWidth: 1025,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'OKOTECH - O7 SLIDING SERIES',
-                glassType: '11.52mm Security Glass',
-                weight: 192.446,
-                desc: 'Large 3-Track Slider'
-            },
-            {
-                id: 'W6',
-                category: 'casement',
-                isPdf: true,
-                name: 'W6 - Casement Window',
-                type: 'casement_transom',
-                code: 'W6',
-                width: 925,
-                height: 1500,
-                transomHeight: 450,
-                mullionWidth: 450,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'OKOTECH - O7 CASEMENT SERIES',
-                glassType: '5mm Clear Toughened',
-                weight: 29.061,
-                desc: 'Casement 925x1500'
-            },
-            {
-                id: 'W7',
-                category: 'sliding',
-                isPdf: true,
-                name: 'W7 - 2-Track Sliding (1600)',
-                type: 'sliding_2track',
-                code: 'W7',
-                width: 1600,
-                height: 975,
-                transomHeight: 450,
-                mullionWidth: 800,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'OKOTECH - O7 SLIDING SERIES',
-                glassType: '5mm Clear Toughened',
-                weight: 32.887,
-                desc: '2-Track 2-Sash Slider'
-            },
-            {
-                id: 'W8',
-                category: 'sliding',
-                isPdf: true,
-                name: 'W8 - 3-Track Sliding (1800)',
-                type: 'sliding_3track',
-                code: 'W8',
-                width: 1800,
-                height: 2400,
-                transomHeight: 1200,
-                mullionWidth: 900,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'OKOTECH - O7 SLIDING SERIES',
-                glassType: '6 MM CLEAR TOUGHENED GLASS',
-                weight: 122.466,
-                desc: '1800x2400 3-Track Slider'
-            },
-            {
-                id: 'W10',
-                category: 'casement',
-                isPdf: true,
-                name: 'W10 - Casement Window 900',
-                type: 'casement_transom',
-                code: 'W10',
-                width: 900,
-                height: 1500,
-                transomHeight: 450,
-                mullionWidth: 450,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'OKOTECH - O7 CASEMENT SERIES',
-                glassType: '5mm Clear Toughened',
-                weight: 28.386,
-                desc: 'Casement 900x1500'
-            },
-            {
-                id: 'W13',
-                category: 'casement',
-                isPdf: true,
-                name: 'W13 - Tall Casement 800',
-                type: 'casement_transom',
-                code: 'W13',
-                width: 800,
-                height: 1725,
-                transomHeight: 450,
-                mullionWidth: 400,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'OKOTECH - O7 CASEMENT SERIES',
-                glassType: '5mm Clear Toughened',
-                weight: 28.492,
-                desc: 'Tall Casement 800x1725'
-            },
-            {
-                id: 'W14',
-                category: 'sliding',
-                isPdf: true,
-                name: 'W14 - 3-Track Slider (1525)',
-                type: 'sliding_3track',
-                code: 'W14',
-                width: 1525,
-                height: 1825,
-                transomHeight: 450,
-                mullionWidth: 763,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'OKOTECH - O7 SLIDING SERIES',
-                glassType: '5mm Clear Toughened',
-                weight: 77.227,
-                desc: '1525x1825 3-Track Slider'
-            },
-            // Magnesta PDF Specifics
-            {
-                id: 'W1_VEK',
-                category: 'sliding',
-                isPdf: true,
-                name: 'W1 Veka - 2-Track + Flymesh',
-                type: 'sliding_3track',
-                code: 'W1',
-                width: 1800,
-                height: 1500,
-                transomHeight: 450,
-                mullionWidth: 900,
-                profileColor: '#f8fafc',
-                colorName: 'WHITE',
-                profileSeries: 'Veka - I 60 Sliding Series',
-                glassType: '5mm Clear Float',
-                weight: 43.594,
-                desc: 'Veka 1800x1500 Slider'
-            },
-            {
-                id: 'W3_TOW',
-                category: 'casement',
-                isPdf: true,
-                name: 'W3 - 4-Tier Casement Tower',
-                type: 'casement_tower_4bay',
-                code: 'W3',
-                width: 450,
-                height: 3050,
-                transomHeight: 800,
-                mullionWidth: 450,
-                profileColor: '#f8fafc',
-                colorName: 'WHITE',
-                profileSeries: 'Veka - I 60 Casement Series',
-                glassType: '6mm Toughened Glass',
-                weight: 23.466,
-                desc: '4-Tier Tower 450x3050'
-            },
-            {
-                id: 'V1',
-                category: 'ventilator',
-                isPdf: true,
-                name: 'V1 - Compact Ventilator',
-                type: 'vent_louver_fan',
-                code: 'V1',
-                width: 600,
-                height: 900,
-                transomHeight: 450,
-                mullionWidth: 300,
-                profileColor: '#f8fafc',
-                colorName: 'WHITE',
-                profileSeries: 'Veka - I 39 Compact Casement',
-                glassType: 'No Glass / Obscure',
-                weight: 3.806,
-                desc: 'Fan Cutout + Louver'
-            },
-            {
-                id: 'V2',
-                category: 'ventilator',
-                isPdf: true,
-                name: 'V2 - Double Bay Ventilator',
-                type: 'vent_double_bay',
-                code: 'V2',
-                width: 900,
-                height: 900,
-                transomHeight: 450,
-                mullionWidth: 450,
-                profileColor: '#f8fafc',
-                colorName: 'WHITE',
-                profileSeries: 'Veka - I 39 Compact Casement',
-                glassType: 'No Glass / Louver',
-                weight: 5.586,
-                desc: 'Fan + Louver + Fixed'
-            },
-            {
-                id: 'V4',
-                category: 'ventilator',
-                isPdf: true,
-                name: 'V4 - Double Bay Ventilator (Fixed Glass)',
-                type: 'vent_double_bay_fix',
-                code: 'V4',
-                width: 1157,
-                height: 518,
-                transomHeight: 155,
-                mullionWidth: 578,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'Veka - I 39 Compact Casement',
-                glassType: '5mm Clear Toughened',
-                weight: 6.2,
-                desc: 'Fan + Fix Glass + Fixed'
-            },
-            {
-                id: 'V3',
-                category: 'ventilator',
-                isPdf: true,
-                name: 'V3 - Wide Ventilator',
-                type: 'vent_wide_fan',
-                code: 'V3',
-                width: 1800,
-                height: 600,
-                transomHeight: 300,
-                mullionWidth: 450,
-                profileColor: '#f8fafc',
-                colorName: 'WHITE',
-                profileSeries: 'Veka - I 60 Casement Series',
-                glassType: 'Single Glazing',
-                weight: 9.339,
-                desc: '450 Fan + 1350 Fixed'
-            },
-            // Additional Popular Fenestration Types
-            {
-                id: 'SLD_4P',
-                category: 'sliding',
-                isPdf: false,
-                name: '4-Panel Center Opening Sliding Door (O-X-X-O)',
-                type: 'sliding_4panel',
-                code: 'SD4',
-                width: 2400,
-                height: 2100,
-                transomHeight: 450,
-                mullionWidth: 600,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'Heavy Duty 2-Track Slider',
-                glassType: '6mm Clear Toughened',
-                weight: 98.5,
-                desc: 'Center Opening Patio Door'
-            },
-            {
-                id: 'SLD_3S',
-                category: 'sliding',
-                isPdf: false,
-                name: '3-Track 3-Sash Slider',
-                type: 'sliding_3track_3sash',
-                code: 'S3S',
-                width: 2400,
-                height: 1800,
-                transomHeight: 450,
-                mullionWidth: 800,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: '3-Track 3-Sash Series',
-                glassType: '5mm Clear Toughened',
-                weight: 84.0,
-                desc: '3 Movable Glass Sashes'
-            },
-            {
-                id: 'SLD_TR',
-                category: 'sliding',
-                isPdf: false,
-                name: 'Sliding + Top Fixed Transom',
-                type: 'sliding_transom',
-                code: 'SWT',
-                width: 1600,
-                height: 2100,
-                transomHeight: 500,
-                mullionWidth: 800,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'Sliding Combination Series',
-                glassType: '5mm Clear Toughened',
-                weight: 62.0,
-                desc: 'Slider + Top Fanlight'
-            },
-            {
-                id: 'CSM_1P',
-                category: 'casement',
-                isPdf: false,
-                name: '1-Panel Casement Window',
-                type: 'casement_single',
-                code: 'CW1',
-                width: 750,
-                height: 1200,
-                transomHeight: 400,
-                mullionWidth: 375,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: '60mm Casement Series',
-                glassType: '5mm Clear Float',
-                weight: 18.2,
-                desc: 'Single Side-Hung Sash'
-            },
-            {
-                id: 'CSM_DBL',
-                category: 'casement',
-                isPdf: false,
-                name: '2-Panel Casement (1 Fix + 1 Open)',
-                type: 'casement_double_fix_open',
-                code: 'CW2',
-                width: 1500,
-                height: 1200,
-                transomHeight: 400,
-                mullionWidth: 750,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: '60mm Casement Series',
-                glassType: '5mm Clear Toughened',
-                weight: 36.5,
-                desc: '1 Fixed + 1 Openable'
-            },
-            {
-                id: 'CSM_FRN',
-                category: 'casement',
-                isPdf: false,
-                name: '2-Panel French Casement',
-                type: 'casement_french',
-                code: 'FCW',
-                width: 1400,
-                height: 1400,
-                transomHeight: 400,
-                mullionWidth: 700,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: '60mm French Casement',
-                glassType: '5mm Clear Toughened',
-                weight: 38.0,
-                desc: 'Both Sashes Openable'
-            },
-            {
-                id: 'CSM_3P',
-                category: 'casement',
-                isPdf: false,
-                name: '3-Panel Casement (Open-Fix-Open)',
-                type: 'casement_triple',
-                code: 'CW3',
-                width: 1800,
-                height: 1200,
-                transomHeight: 400,
-                mullionWidth: 600,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: '60mm Casement Series',
-                glassType: '5mm Clear Toughened',
-                weight: 46.2,
-                desc: 'Open + Fix + Open'
-            },
-            {
-                id: 'CSM_TT',
-                category: 'casement',
-                isPdf: false,
-                name: 'Tilt & Turn Window',
-                type: 'tilt_and_turn',
-                code: 'TT1',
-                width: 900,
-                height: 1400,
-                transomHeight: 400,
-                mullionWidth: 450,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: '60mm Tilt & Turn Series',
-                glassType: '6mm Clear Toughened',
-                weight: 28.5,
-                desc: 'Dual Action Tilt & Turn'
-            },
-            {
-                id: 'CSM_AWN',
-                category: 'casement',
-                isPdf: false,
-                name: 'Top-Hung / Awning Window',
-                type: 'casement_top_hung',
-                code: 'AW1',
-                width: 1000,
-                height: 800,
-                transomHeight: 400,
-                mullionWidth: 500,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: '60mm Casement Series',
-                glassType: '5mm Clear Float',
-                weight: 16.0,
-                desc: 'Outward Top-Hung Awning'
-            },
-            {
-                id: 'DR_SLD4',
-                category: 'doors',
-                isPdf: false,
-                name: 'Center Opening uPVC Sliding Door (O-X-X-O)',
-                type: 'sliding_4panel',
-                code: 'PD4',
-                width: 2400,
-                height: 2100,
-                transomHeight: 450,
-                mullionWidth: 600,
-                profileColor: '#f8fafc',
-                colorName: 'WHITE',
-                profileSeries: 'Heavy Duty 2-Track Sliding Door Series',
-                glassType: '6mm Clear Toughened Glass',
-                weight: 104.5,
-                desc: 'White uPVC Center Open Door'
-            },
-            {
-                id: 'DR_FRN',
-                category: 'doors',
-                isPdf: false,
-                name: 'French Double Door',
-                type: 'double_door_french',
-                code: 'FD1',
-                width: 1800,
-                height: 2400,
-                transomHeight: 450,
-                mullionWidth: 900,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'Heavy Duty Door Series',
-                glassType: '6mm Toughened Glass',
-                weight: 92.0,
-                desc: 'Double Door Meeting'
-            },
-            {
-                id: 'DR_MID',
-                category: 'doors',
-                isPdf: false,
-                name: 'Door with Mid-Rail Kickplate',
-                type: 'casement_door_midrail',
-                code: 'MD1',
-                width: 900,
-                height: 2100,
-                transomHeight: 900,
-                mullionWidth: 450,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: '60mm Door Series',
-                glassType: '5mm Toughened + Solid Panel',
-                weight: 48.0,
-                desc: 'Glass Top + Kickplate'
-            },
-            {
-                id: 'DR_TRN',
-                category: 'doors',
-                isPdf: false,
-                name: 'Door with Top Fanlight',
-                type: 'door_with_transom',
-                code: 'DT1',
-                width: 900,
-                height: 2400,
-                transomHeight: 450,
-                mullionWidth: 450,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: '60mm Door Series',
-                glassType: '6mm Clear Toughened',
-                weight: 52.0,
-                desc: 'Door + Fixed Fanlight'
-            },
-            {
-                id: 'V_LOUV',
-                category: 'ventilator',
-                isPdf: false,
-                name: 'Full Glass Louvers Ventilator',
-                type: 'vent_louver_only',
-                code: 'VL1',
-                width: 600,
-                height: 900,
-                transomHeight: 450,
-                mullionWidth: 300,
-                profileColor: '#f8fafc',
-                colorName: 'WHITE',
-                profileSeries: 'Compact Louver Series',
-                glassType: '4mm Frosted Louver Blades',
-                weight: 4.8,
-                desc: '100% Louver Slats'
-            },
-            {
-                id: 'V_FAN',
-                category: 'ventilator',
-                isPdf: false,
-                name: 'Exhaust Fan Cutout Ventilator',
-                type: 'vent_fan_only',
-                code: 'VF1',
-                width: 600,
-                height: 600,
-                transomHeight: 300,
-                mullionWidth: 300,
-                profileColor: '#f8fafc',
-                colorName: 'WHITE',
-                profileSeries: 'Exhaust Series',
-                glassType: '5mm Clear w/ 150mm Cutout',
-                weight: 3.5,
-                desc: 'Circular Fan Cutout'
-            },
-            {
-                id: 'V_AWN',
-                category: 'ventilator',
-                isPdf: false,
-                name: 'Top-Hung Toilet Ventilator',
-                type: 'vent_top_hung',
-                code: 'VT1',
-                width: 600,
-                height: 600,
-                transomHeight: 300,
-                mullionWidth: 300,
-                profileColor: '#f8fafc',
-                colorName: 'WHITE',
-                profileSeries: 'Compact Casement Series',
-                glassType: '5mm Frosted / Pinhead',
-                weight: 3.9,
-                desc: 'Toilet Awning Ventilator'
-            },
-            {
-                id: 'FIX_2B',
-                category: 'fixed',
-                isPdf: false,
-                name: '2-Bay Fixed Window',
-                type: 'fixed_2bay',
-                code: 'FW2',
-                width: 2000,
-                height: 1400,
-                transomHeight: 450,
-                mullionWidth: 1000,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'Casement Outer Frame',
-                glassType: '6mm Clear Toughened',
-                weight: 48.0,
-                desc: '2 Fixed Bays with Mullion'
-            },
-            {
-                id: 'FIX_3B',
-                category: 'fixed',
-                isPdf: false,
-                name: '3-Bay Fixed Picture Window',
-                type: 'fixed_3bay',
-                code: 'FW3',
-                width: 2700,
-                height: 1500,
-                transomHeight: 450,
-                mullionWidth: 900,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'Casement Outer Frame',
-                glassType: '6mm Clear Toughened',
-                weight: 68.0,
-                desc: '3 Fixed Bays with Mullions'
-            },
-            {
-                id: 'FIX_GRD',
-                category: 'fixed',
-                isPdf: false,
-                name: 'Georgian Grid Fixed Window',
-                type: 'fixed_georgian',
-                code: 'FG1',
-                width: 1200,
-                height: 1200,
-                transomHeight: 450,
-                mullionWidth: 600,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'Georgian Casement Series',
-                glassType: '5mm Toughened w/ Grids',
-                weight: 22.0,
-                desc: 'Decorative Colonial Grids',
-                georgianBars: 'auto',
-                georgianCols: 2,
-                georgianRows: 2
-            },
-            {
-                id: 'FD_GEO',
-                category: 'doors',
-                isPdf: false,
-                name: 'Georgian French Double Door',
-                type: 'double_door_french',
-                code: 'FDG1',
-                width: 1800,
-                height: 2400,
-                transomHeight: 450,
-                mullionWidth: 900,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: 'Heavy Duty Door Series',
-                glassType: '6mm Toughened Glass',
-                weight: 94.0,
-                desc: 'Colonial Grid French Door',
-                georgianBars: '2x4',
-                georgianCols: 2,
-                georgianRows: 4
-            },
-            {
-                id: 'PD4_GEO',
-                category: 'doors',
-                isPdf: false,
-                name: 'Georgian 4-Panel Sliding Patio Door',
-                type: 'sliding_4panel',
-                code: 'PDG4',
-                width: 2400,
-                height: 2100,
-                transomHeight: 450,
-                mullionWidth: 600,
-                profileColor: '#f8fafc',
-                colorName: 'WHITE',
-                profileSeries: 'Heavy Duty 2-Track Sliding Door Series',
-                glassType: '6mm Clear Toughened Glass',
-                weight: 106.0,
-                desc: 'White uPVC Georgian Patio Door',
-                georgianBars: '2x3',
-                georgianCols: 2,
-                georgianRows: 3
-            },
-            {
-                id: 'CW_GEO',
-                category: 'casement',
-                isPdf: false,
-                name: 'Georgian 2-Panel French Casement',
-                type: 'casement_french',
-                code: 'FCG',
-                width: 1400,
-                height: 1400,
-                transomHeight: 400,
-                mullionWidth: 700,
-                profileColor: '#111827',
-                colorName: 'BLACK',
-                profileSeries: '60mm French Casement',
-                glassType: '5mm Clear Toughened',
-                weight: 39.5,
-                desc: 'French Casement w/ Grids',
-                georgianBars: '2x3',
-                georgianCols: 2,
-                georgianRows: 3
-            }
-        ];
+        // Authoritative catalog presets loaded from dataBase.js (Single Source of Truth)
+        const PRESETS = (window.CAD_DB && Array.isArray(window.CAD_DB.PRESETS)) ? window.CAD_DB.PRESETS : [];
 
-        // Current State & Filter
         let currentCategory = 'all';
         const STORAGE_KEY = 'UPVC_BOQ_PROJECT_ITEMS_V2';
+
+        // CAD Engine Core Instance & Interactive Viewport State
+        const cadScene = new (window.CAD_CORE || window.CAD_ENGINE).CADScene();
+        let activeStudioMode = 'bim'; // 'bim' | 'cad' | 'boq'
+
+        let cadViewport = {
+            panX: 0,
+            panY: 0,
+            zoom: 1.0,
+            activeTool: 'select', // 'select' | 'pan' | 'line' | 'polyline' | 'rect' | 'circle' | 'dim' | 'text'
+            osnapEnabled: true,
+            orthoEnabled: false,
+            gridEnabled: true,
+            activeSnap: null,
+            isDragging: false,
+            isPanning: false,
+            panStartX: 0,
+            panStartY: 0,
+            startPt: null,
+            tempPt: null,
+            dimP1: null,
+            dimP2: null,
+            cursorX: 0,
+            cursorY: 0
+        };
 
         let state = {
             id: 'card_1',
@@ -2748,42 +2516,7 @@ opacity: 1;
             if (window.CAD_DB && typeof window.CAD_DB.getTypeCode === 'function') {
                 return window.CAD_DB.getTypeCode(type);
             }
-            const codes = {
-                // Fixed Windows
-                fixed_window: 'FW1',
-                fixed_2bay: 'FW2',
-                fixed_3bay: 'FW3',
-                fixed_georgian: 'FG1',
-                // Casement Windows
-                casement_single: 'CW1',
-                casement_transom: 'CWT',
-                casement_double_fix_open: 'CW2',
-                casement_french: 'FCW',
-                casement_triple: 'CW3',
-                casement_top_hung: 'AW1',
-                tilt_and_turn: 'TT1',
-                casement_tower_4bay: 'CT4',
-                // Sliding Windows & Patio Doors
-                sliding_2track: 'SW2',
-                sliding_3track: 'SW3',
-                sliding_3track_3sash: 'S3S',
-                sliding_4panel: 'PD4',
-                sliding_transom: 'SWT',
-                // Doors
-                casement_door: 'D1',
-                casement_door_midrail: 'MD1',
-                double_door_french: 'FD1',
-                door_with_transom: 'DT1',
-                // Ventilators
-                vent_louver_fan: 'V1',
-                vent_double_bay: 'V2',
-                vent_double_bay_fix: 'V4',
-                vent_wide_fan: 'V3',
-                vent_louver_only: 'VL1',
-                vent_fan_only: 'VF1',
-                vent_top_hung: 'VT1'
-            };
-            return codes[type] || 'CW1';
+            return 'CW1';
         }
 
         function loadProjectFromStorage() {
@@ -2822,6 +2555,51 @@ opacity: 1;
                                 georgianRows: 3,
                                 desc: 'Double Bay Fan + Fixed Glass'
                             });
+                            saveProjectToStorage();
+                        }
+                        if (!project.items.some(it => it.type === 'shower_2bay_rod')) {
+                            project.items.push(
+                                {
+                                    id: 'card_sh1_' + Date.now(),
+                                    code: 'SH1',
+                                    type: 'shower_2bay_rod',
+                                    width: 1829,
+                                    height: 2438,
+                                    transomHeight: 2438,
+                                    mullionWidth: 686,
+                                    profileColor: '#f8fafc',
+                                    colorName: 'WHITE',
+                                    profileSeries: 'HAFELE - Frameless Glass Fittings (Ø19mm Header & SS304 Patch)',
+                                    glassType: '10mm Clear Toughened Glass',
+                                    weight: 111.45,
+                                    qty: 1,
+                                    flipHorizontal: false,
+                                    georgianBars: 'none',
+                                    georgianCols: 2,
+                                    georgianRows: 3,
+                                    desc: '27"+45" × 8\' w/ Reinforcement Rod'
+                                },
+                                {
+                                    id: 'card_sh2_' + (Date.now() + 1),
+                                    code: 'SH2',
+                                    type: 'shower_2bay_stepped',
+                                    width: 1829,
+                                    height: 2794,
+                                    transomHeight: 1981,
+                                    mullionWidth: 686,
+                                    profileColor: '#f8fafc',
+                                    colorName: 'WHITE',
+                                    profileSeries: 'HAFELE - Frameless Glass Fittings (Ø19mm Header & SS304 Patch)',
+                                    glassType: '10mm Clear Toughened Glass',
+                                    weight: 113.88,
+                                    qty: 1,
+                                    flipHorizontal: false,
+                                    georgianBars: 'none',
+                                    georgianCols: 2,
+                                    georgianRows: 3,
+                                    desc: 'Stepped 78"/110" Partition'
+                                }
+                            );
                             saveProjectToStorage();
                         }
                         return;
@@ -3078,7 +2856,10 @@ opacity: 1;
                 vent_wide_fan: 'Vent: Wide Fan + Fix',
                 vent_louver_only: 'Full Louvers',
                 vent_fan_only: 'Fan Cutout Only',
-                vent_top_hung: 'Toilet Awning'
+                vent_top_hung: 'Toilet Awning',
+                shower_2bay_rod: '2-Bay Shower w/ Header Rod',
+                shower_2bay_stepped: 'Stepped 2-Bay Glass Partition',
+                shower_3bay_hafele: 'Hafele 1-Door 2-Fix Partition'
             };
             return types[type] || type || 'Window';
         }
@@ -3368,11 +3149,35 @@ opacity: 1;
             const mullionGroup = document.getElementById('groupMullionSplit');
             if (!transomGroup || !mullionGroup) return;
 
-            const hasTransom = ['casement_transom', 'sliding_transom', 'door_with_transom', 'vent_louver_fan', 'vent_double_bay', 'vent_double_bay_fix', 'casement_tower_4bay'].includes(state.type);
-            const hasMullion = ['vent_double_bay', 'vent_double_bay_fix', 'vent_wide_fan', 'casement_double_fix_open', 'casement_french', 'casement_triple', 'fixed_2bay', 'fixed_3bay', 'custom_grid'].includes(state.type);
+            const hasTransom = [
+                'casement_transom', 'sliding_transom', 'door_with_transom',
+                'vent_louver_fan', 'vent_double_bay', 'vent_double_bay_fix',
+                'casement_tower_4bay', 'shower_2bay_stepped'
+            ].includes(state.type);
+
+            const hasMullion = [
+                'vent_double_bay', 'vent_double_bay_fix', 'vent_wide_fan',
+                'casement_double_fix_open', 'casement_french', 'casement_triple',
+                'fixed_2bay', 'fixed_3bay', 'custom_grid',
+                'shower_2bay_rod', 'shower_2bay_stepped', 'shower_3bay_hafele'
+            ].includes(state.type);
 
             transomGroup.style.display = hasTransom ? 'flex' : 'none';
             mullionGroup.style.display = hasMullion ? 'flex' : 'none';
+
+            // Dynamically label inputs for Stepped / Shower Partitions
+            const transomLabel = transomGroup.querySelector('label');
+            if (transomLabel) {
+                transomLabel.textContent = (state.type === 'shower_2bay_stepped')
+                    ? 'Door Height (78" = 1981)'
+                    : 'Transom Height';
+            }
+            const mullionLabel = mullionGroup.querySelector('label');
+            if (mullionLabel) {
+                mullionLabel.textContent = state.type.startsWith('shower_')
+                    ? 'Door Width (27" = 686)'
+                    : 'Mullion Width';
+            }
         }
 
         function updateStats() {
@@ -3459,6 +3264,10 @@ opacity: 1;
             }
         };
 function render() {
+            // Clear previous parametric entities while preserving user-drawn custom CAD entities
+            if (cadScene && typeof cadScene.clearParametricEntities === 'function') {
+                cadScene.clearParametricEntities();
+            }
             const theme = THEMES[state.theme];
             // 3x High-DPI Super-sampling (300 DPI equivalent) for razor-sharp CAD vector output
             const dpr = 3;
@@ -3638,6 +3447,15 @@ function render() {
                 case 'vent_top_hung':
                     drawTopHung(plotW, plotH, scale, outerProfileThick, sashProfileThick, profileFillColor, sashFillColor, theme);
                     break;
+                case 'shower_2bay_rod':
+                    drawShower2BayRod(plotW, plotH, scale, theme);
+                    break;
+                case 'shower_2bay_stepped':
+                    drawShower2BayStepped(plotW, plotH, scale, theme);
+                    break;
+                case 'shower_3bay_hafele':
+                    drawShower3BayHafele(plotW, plotH, scale, theme);
+                    break;
                 default:
                     drawFixedWindow(plotW, plotH, scale, outerProfileThick, profileFillColor, theme);
                     break;
@@ -3672,6 +3490,9 @@ function render() {
          * Draws outer extruded frame profile with 45-degree welded miter joints and inner rebate lines
          */
         function drawProfileRect(x, y, w, h, t, fillColor, strokeColor, innerLineColor) {
+            if (cadScene) {
+                cadScene.addProfileRect(x, y, w, h, t, { frameColor: fillColor, strokeColor, innerColor: innerLineColor });
+            }
             ctx.save();
             // Outer profile fill
             ctx.fillStyle = fillColor;
@@ -3701,6 +3522,9 @@ function render() {
          * Draws vertical mullion or horizontal transom profile
          */
         function drawMullion(x, y, w, h, isVertical, t, fillColor, strokeColor, innerLineColor) {
+            if (cadScene) {
+                cadScene.addMullion(x, y, w, h, isVertical, t, { fillColor, strokeColor, innerColor: innerLineColor });
+            }
             ctx.save();
             ctx.fillStyle = fillColor;
             ctx.fillRect(x, y, w, h);
@@ -3734,6 +3558,9 @@ function render() {
          * Draws operable sash profile with welded corners and inner glass bead
          */
         function drawSash(x, y, w, h, t, fillColor, strokeColor, innerLineColor) {
+            if (cadScene) {
+                cadScene.addSash(x, y, w, h, t, { sashColor: fillColor, strokeColor, innerColor: innerLineColor });
+            }
             ctx.save();
             ctx.fillStyle = fillColor;
             ctx.fillRect(x, y, w, h);
@@ -3858,6 +3685,9 @@ function render() {
          * Draws glass pane with specular glare reflections, circled number, and tag label
          */
         function drawGlass(x, y, w, h, theme, glassNum, tagLabel) {
+            if (cadScene) {
+                cadScene.addGlass(x, y, w, h, { glassFill: theme.glassFill, strokeColor: theme.glassStroke, glassNum, tagLabel });
+            }
             ctx.save();
             // Glass fill
             ctx.fillStyle = theme.glassFill;
@@ -5069,6 +4899,357 @@ function render() {
         }
 
         /**
+         * =================================================================
+         * HAFELE FRAMELESS GLASS PARTITION HARDWARE & ELEVATION RENDERERS
+         * =================================================================
+         */
+
+        // Draws Ø19mm SS Header / Reinforcement Rod (Hafele 981.20.190-194) with Wall & Glass Clamps
+        function drawReinforcementHeaderBar(x, y, w, clampXPositions, theme) {
+            ctx.save();
+            const rodH = 7;
+            const rodY = y - rodH / 2;
+            const ssFill = state.theme === 'print' ? '#cbd5e1' : '#94a3b8';
+            const ssStroke = state.theme === 'print' ? '#0f172a' : '#f8fafc';
+            const magentaCallout = state.theme === 'print' ? '#db2777' : '#f472b6';
+
+            // Main Ø19mm SS Tube
+            ctx.fillStyle = ssFill;
+            ctx.strokeStyle = ssStroke;
+            ctx.lineWidth = 1.4;
+            ctx.fillRect(x, rodY, w, rodH);
+            ctx.strokeRect(x, rodY, w, rodH);
+
+            // Specular highlight along tube center
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 0.9;
+            ctx.beginPath();
+            ctx.moveTo(x + 4, y);
+            ctx.lineTo(x + w - 4, y);
+            ctx.stroke();
+
+            // Left & Right Wall Supports (Hafele 981.20.500 / 981.20.151)
+            const wallSupW = 8;
+            const wallSupH = 15;
+            ctx.fillStyle = state.theme === 'print' ? '#64748b' : '#e2e8f0';
+            ctx.strokeStyle = magentaCallout;
+            ctx.lineWidth = 1.2;
+            ctx.fillRect(x - 2, y - wallSupH / 2, wallSupW, wallSupH);
+            ctx.strokeRect(x - 2, y - wallSupH / 2, wallSupW, wallSupH);
+            ctx.fillRect(x + w - wallSupW + 2, y - wallSupH / 2, wallSupW, wallSupH);
+            ctx.strokeRect(x + w - wallSupW + 2, y - wallSupH / 2, wallSupW, wallSupH);
+
+            // Glass Middle Support Clamps (Hafele 981.20.520 / 981.20.171)
+            (clampXPositions || []).forEach(cx => {
+                ctx.fillStyle = ssFill;
+                ctx.strokeStyle = magentaCallout;
+                ctx.lineWidth = 1.2;
+                ctx.fillRect(cx - 7, y - 6, 14, 18);
+                ctx.strokeRect(cx - 7, y - 6, 14, 18);
+                // Clamp set screw dot
+                ctx.fillStyle = magentaCallout;
+                ctx.beginPath();
+                ctx.arc(cx, y + 6, 2, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            // Header Bar Callout Badge
+            if (state.showHardwareTags) {
+                const label = 'REINFORCEMENT ROD (Ø19mm SS HEADER)';
+                const tagX = Math.round(x + w / 2);
+                const tagY = Math.round(y - 18);
+                ctx.save();
+                if (state.flipHorizontal) {
+                    ctx.translate(tagX, tagY);
+                    ctx.scale(-1, 1);
+                    ctx.translate(-tagX, -tagY);
+                }
+                ctx.font = '800 12px "JetBrains Mono", monospace';
+                const tw = ctx.measureText(label).width;
+                ctx.fillStyle = theme.tagBg;
+                ctx.beginPath();
+                ctx.roundRect(tagX - tw / 2 - 8, tagY - 11, tw + 16, 22, 4);
+                ctx.fill();
+                ctx.strokeStyle = magentaCallout;
+                ctx.lineWidth = 1.3;
+                ctx.stroke();
+                ctx.fillStyle = magentaCallout;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(label, tagX, tagY);
+                ctx.restore();
+            }
+            ctx.restore();
+        }
+
+        // Draws Hafele Wall-to-Glass or 180° Glass-to-Glass Hinge (981.55.066 / 067)
+        function drawHafelePatchHinge(x, y, isGlassToGlass, theme) {
+            ctx.save();
+            const leafW = 22;
+            const leafH = 26;
+            const ssFill = state.theme === 'print' ? '#e2e8f0' : '#475569';
+            const stroke = state.theme === 'print' ? '#be185d' : '#f472b6';
+
+            ctx.fillStyle = ssFill;
+            ctx.strokeStyle = stroke;
+            ctx.lineWidth = 1.4;
+
+            if (isGlassToGlass) {
+                // Left leaf (on fixed glass) + Right leaf (on door glass)
+                ctx.fillRect(x - leafW - 1, y - leafH / 2, leafW, leafH);
+                ctx.strokeRect(x - leafW - 1, y - leafH / 2, leafW, leafH);
+                ctx.fillRect(x + 1, y - leafH / 2, leafW, leafH);
+                ctx.strokeRect(x + 1, y - leafH / 2, leafW, leafH);
+                // Center knuckle barrel
+                ctx.fillStyle = stroke;
+                ctx.fillRect(x - 2, y - leafH / 2 - 2, 4, leafH + 4);
+                // Ø16mm cutout bolts
+                [-leafW / 2 - 1, leafW / 2 + 1].forEach(dx => {
+                    ctx.beginPath();
+                    ctx.arc(x + dx, y - 6, 2.2, 0, Math.PI * 2);
+                    ctx.arc(x + dx, y + 6, 2.2, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+            } else {
+                // Wall-mounted hinge plate + leaf on door
+                ctx.fillRect(x - 4, y - leafH / 2 - 3, 5, leafH + 6);
+                ctx.strokeRect(x - 4, y - leafH / 2 - 3, 5, leafH + 6);
+                ctx.fillRect(x + 1, y - leafH / 2, leafW, leafH);
+                ctx.strokeRect(x + 1, y - leafH / 2, leafW, leafH);
+                // Fastener dots
+                ctx.fillStyle = stroke;
+                ctx.beginPath();
+                ctx.arc(x + leafW * 0.55, y - 6, 2.2, 0, Math.PI * 2);
+                ctx.arc(x + leafW * 0.55, y + 6, 2.2, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            ctx.restore();
+        }
+
+        // Draws Hafele 90° Wall/Floor-to-Glass Bracket (981.55.072 / 981.20.230 / 240)
+        function drawHafeleBracket90(x, y, position, theme) {
+            ctx.save();
+            const sz = 14;
+            const fill = state.theme === 'print' ? '#e2e8f0' : '#475569';
+            const stroke = state.theme === 'print' ? '#be185d' : '#f472b6';
+            ctx.fillStyle = fill;
+            ctx.strokeStyle = stroke;
+            ctx.lineWidth = 1.2;
+
+            let bx = x;
+            let by = y;
+            if (position === 'floor') { bx = x - sz / 2; by = y - sz; }
+            else if (position === 'right-wall') { bx = x - sz; by = y - sz / 2; }
+            else if (position === 'left-wall') { bx = x; by = y - sz / 2; }
+
+            ctx.fillRect(bx, by, sz, sz);
+            ctx.strokeRect(bx, by, sz, sz);
+
+            // Ø12 / Ø14mm Glass Cutout Hole
+            ctx.fillStyle = stroke;
+            ctx.beginPath();
+            ctx.arc(bx + sz / 2, by + sz / 2, 2.4, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+        }
+
+        // Draws 4-Point Cutout Dots (from Sketch 1 & 2) + Hafele Towel Bar w/ Pull Handle (983.13.050)
+        function drawShowerHandleAndDots(doorX, doorY, doorW, doorH, drawTowelBar, theme) {
+            ctx.save();
+            const stroke = state.theme === 'print' ? '#be185d' : '#f472b6';
+            const fill = state.theme === 'print' ? '#f8fafc' : '#cbd5e1';
+
+            const midY = doorY + doorH * 0.52;
+            const rightHoleX = doorX + doorW - Math.max(22, doorW * 0.14);
+            const leftHoleX = doorX + Math.max(42, doorW * 0.36);
+            const vSpan = Math.min(76, Math.max(36, doorH * 0.14));
+            const topHoleY = midY - vSpan / 2;
+            const btmHoleY = midY + vSpan / 2;
+
+            if (drawTowelBar) {
+                // Vertical Pull Handle (450mm Center-to-Center) + Horizontal Towel Bar
+                ctx.fillStyle = fill;
+                ctx.strokeStyle = stroke;
+                ctx.lineWidth = 1.5;
+
+                // Horizontal towel bar arm
+                ctx.beginPath();
+                ctx.roundRect(leftHoleX - 3, btmHoleY - 3.5, rightHoleX - leftHoleX + 6, 7, 3);
+                ctx.fill();
+                ctx.stroke();
+
+                // Vertical pull handle bar
+                ctx.beginPath();
+                ctx.roundRect(rightHoleX - 3.5, topHoleY - 6, 7, vSpan + 12, 3);
+                ctx.fill();
+                ctx.stroke();
+            }
+
+            // 4 Mounting Cutout Dots (matching the 4 dots drawn on the 27" door in both sketches)
+            const dots = [
+                [rightHoleX, topHoleY],
+                [rightHoleX, btmHoleY],
+                [leftHoleX, topHoleY],
+                [leftHoleX, btmHoleY]
+            ];
+            ctx.fillStyle = stroke;
+            dots.forEach(([dx, dy]) => {
+                ctx.beginPath();
+                ctx.arc(dx, dy, 3.5, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            ctx.restore();
+        }
+
+        // 23. Sketch 1: 2-Bay Frameless Glass Partition w/ Top Reinforcement Rod (27" Door + 45" Fixed × 8' H)
+        function drawShower2BayRod(w, h, scale, theme) {
+            const splitRatio = state.mullionWidth ? Math.min(0.8, Math.max(0.2, state.mullionWidth / state.width)) : (686 / 1829);
+            const doorW = Math.round(w * splitRatio);
+            const fixW = w - doorW;
+            const floorGap = Math.max(4, Math.round(10 * scale)); // 10mm Bottom Seal Gap (950.28.212)
+
+            // 1. Left Frameless Door Panel (27" = 686mm)
+            drawGlass(0, 0, doorW - 2, h - floorGap, theme, 1, 'DOOR (27")');
+            drawSwingTriangle(0, 0, doorW - 2, h - floorGap, 'left', theme);
+
+            // 2. Right Fixed Glass Panel (45" = 1143mm)
+            const fixX = doorW + 2;
+            drawGlass(fixX, 0, fixW - 2, h, theme, 2, 'FIXED (45")');
+
+            // 3. Magnetic & Bottom Translucent Seals (Hafele 950.28.207 & 950.28.212)
+            ctx.save();
+            ctx.strokeStyle = state.theme === 'print' ? '#0284c7' : '#38bdf8';
+            ctx.lineWidth = 2.2;
+            ctx.beginPath();
+            ctx.moveTo(doorW, 0);
+            ctx.lineTo(doorW, h);
+            ctx.stroke();
+
+            // Floor sill line
+            ctx.strokeStyle = theme.frameOutline;
+            ctx.lineWidth = 2.0;
+            ctx.beginPath();
+            ctx.moveTo(-10, h);
+            ctx.lineTo(w + 10, h);
+            ctx.stroke();
+            ctx.restore();
+
+            // 4. Left Wall Patch Hinges (Top & Bottom on 27" Door)
+            drawHafelePatchHinge(0, Math.round(h * 0.22), false, theme);
+            drawHafelePatchHinge(0, Math.round(h * 0.76), false, theme);
+
+            // 5. 4-Point Handle Cutouts & Towel Bar on Door
+            drawShowerHandleAndDots(0, 0, doorW, h - floorGap, true, theme);
+
+            // 6. 90° Wall & Floor Brackets on 45" Fixed Panel
+            drawHafeleBracket90(fixX + fixW * 0.25, h, 'floor', theme);
+            drawHafeleBracket90(fixX + fixW * 0.78, h, 'floor', theme);
+            drawHafeleBracket90(w, Math.round(h * 0.25), 'right-wall', theme);
+            drawHafeleBracket90(w, Math.round(h * 0.78), 'right-wall', theme);
+
+            // 7. Continuous Top Reinforcement Rod / Header Bar across both bays
+            drawReinforcementHeaderBar(0, 0, w, [fixX + fixW * 0.35, fixX + fixW * 0.75], theme);
+        }
+
+        // 24. Sketch 2: 2-Bay Stepped Glass Partition (27"×78" Left Door + 45"×110" Right Fixed Panel)
+        function drawShower2BayStepped(w, h, scale, theme) {
+            const splitRatio = state.mullionWidth ? Math.min(0.8, Math.max(0.2, state.mullionWidth / state.width)) : (686 / 1829);
+            const doorW = Math.round(w * splitRatio);
+            const fixW = w - doorW;
+
+            const doorHeightMm = Math.min(state.height - 100, Math.max(500, state.transomHeight || 1981));
+            const doorH = Math.round((doorHeightMm / state.height) * h);
+            const doorTopY = h - doorH; // Step offset from top
+            const floorGap = Math.max(4, Math.round(10 * scale));
+
+            // 1. Left Stepped Door Panel (27" W × 78" H)
+            drawGlass(0, doorTopY, doorW - 2, doorH - floorGap, theme, 1, 'DOOR (27"×78")');
+            drawSwingTriangle(0, doorTopY, doorW - 2, doorH - floorGap, 'left', theme);
+
+            // 2. Right Full-Height Fixed Panel (45" W × 110" H)
+            const fixX = doorW + 2;
+            drawGlass(fixX, 0, fixW - 2, h, theme, 2, 'FIXED (45"×110")');
+
+            // 3. Bold Stepped Perimeter Outline & Meeting Seal Joint
+            ctx.save();
+            ctx.strokeStyle = theme.frameOutline;
+            ctx.lineWidth = 2.0;
+            ctx.beginPath();
+            // Stepped top-left door edge -> up to fixed top -> right -> floor -> left
+            ctx.moveTo(0, h - floorGap);
+            ctx.lineTo(0, doorTopY);
+            ctx.lineTo(doorW, doorTopY);
+            ctx.lineTo(doorW, 0);
+            ctx.lineTo(w, 0);
+            ctx.lineTo(w, h);
+            ctx.lineTo(0, h);
+            ctx.stroke();
+
+            // Vertical meeting joint seal along door height
+            ctx.strokeStyle = state.theme === 'print' ? '#0284c7' : '#38bdf8';
+            ctx.lineWidth = 2.2;
+            ctx.beginPath();
+            ctx.moveTo(doorW, doorTopY);
+            ctx.lineTo(doorW, h);
+            ctx.stroke();
+            ctx.restore();
+
+            // 4. Two Hinges on Left Edge of 78" Door (as drawn in Sketch 2)
+            drawHafelePatchHinge(0, Math.round(doorTopY + doorH * 0.22), false, theme);
+            drawHafelePatchHinge(0, Math.round(doorTopY + doorH * 0.76), false, theme);
+
+            // 5. 4-Point Handle Cutout Dots on 78" Door
+            drawShowerHandleAndDots(0, doorTopY, doorW, doorH - floorGap, false, theme);
+
+            // 6. 90° Wall & Floor Brackets on 110" Fixed Panel
+            drawHafeleBracket90(fixX + fixW * 0.25, h, 'floor', theme);
+            drawHafeleBracket90(fixX + fixW * 0.78, h, 'floor', theme);
+            drawHafeleBracket90(w, Math.round(h * 0.22), 'right-wall', theme);
+            drawHafeleBracket90(w, Math.round(h * 0.78), 'right-wall', theme);
+        }
+
+        // 25. Hafele PDF Layout: One Door & Two Fixed Panel Layout w/ Header Bar
+        function drawShower3BayHafele(w, h, scale, theme) {
+            const leftFixW = Math.round(w * 0.26);
+            const doorW = Math.round(w * 0.34);
+            const rightFixW = w - leftFixW - doorW;
+            const floorGap = Math.max(4, Math.round(10 * scale));
+
+            // Bay 1: Left Fixed Panel
+            drawGlass(0, 0, leftFixW - 2, h, theme, 1, 'FIXED 1');
+            // Bay 2: Center Door Panel
+            const doorX = leftFixW + 2;
+            drawGlass(doorX, 0, doorW - 4, h - floorGap, theme, 2, 'DOOR');
+            drawSwingTriangle(doorX, 0, doorW - 4, h - floorGap, 'left', theme);
+            // Bay 3: Right Fixed Panel
+            const rightFixX = leftFixW + doorW + 2;
+            drawGlass(rightFixX, 0, rightFixW - 2, h, theme, 3, 'FIXED 2');
+
+            // 180° Glass-to-Glass Hinges (981.55.066) between Bay 1 & Door
+            drawHafelePatchHinge(leftFixW, Math.round(h * 0.24), true, theme);
+            drawHafelePatchHinge(leftFixW, Math.round(h * 0.76), true, theme);
+
+            // L-Shaped Towel Bar with Pull-Handle (983.13.050)
+            drawShowerHandleAndDots(doorX, 0, doorW - 4, h - floorGap, true, theme);
+
+            // Wall & Floor 90° Brackets on Fixed Panels
+            drawHafeleBracket90(0, Math.round(h * 0.24), 'left-wall', theme);
+            drawHafeleBracket90(0, Math.round(h * 0.76), 'left-wall', theme);
+            drawHafeleBracket90(leftFixW * 0.5, h, 'floor', theme);
+            drawHafeleBracket90(rightFixX + rightFixW * 0.3, h, 'floor', theme);
+            drawHafeleBracket90(rightFixX + rightFixW * 0.75, h, 'floor', theme);
+            drawHafeleBracket90(w, Math.round(h * 0.24), 'right-wall', theme);
+            drawHafeleBracket90(w, Math.round(h * 0.76), 'right-wall', theme);
+
+            // Top Ø19mm Header Bar with Wall & Middle Glass Supports
+            drawReinforcementHeaderBar(0, 0, w, [
+                leftFixW * 0.5,
+                rightFixX + rightFixW * 0.35,
+                rightFixX + rightFixW * 0.75
+            ], theme);
+        }
+
+        /**
          * ==========================================
          * AUTOCAD / EvA DIMENSIONING SYSTEM
          * ==========================================
@@ -5177,12 +5358,29 @@ function render() {
         }
 
         function drawCadDimensions(ox, oy, pw, ph, scale, theme) {
-            // Overall Dimensions with comfortable offset to accommodate 2.5em text
             const totalDimY = oy + ph + (state.showSubDimensions ? 80 : 58);
             drawDimHorizontal(ox, ox + pw, totalDimY, state.width.toString(), theme, totalDimY - (oy + ph), false);
 
             const totalDimX = ox - (state.showSubDimensions ? 96 : 68);
-            drawDimVertical(totalDimX, oy, oy + ph, state.height.toString(), theme, ox - totalDimX, false);
+
+            // Special handling for Stepped 2-Bay Glass Partition (Sketch 2: 78" Door vs 110" Fixed)
+            if (state.type === 'shower_2bay_stepped') {
+                const doorHeightMm = Math.min(state.height - 100, Math.max(500, state.transomHeight || 1981));
+                const doorPlotH = Math.round((doorHeightMm / state.height) * ph);
+                const doorTopPlotY = oy + (ph - doorPlotH);
+
+                if (!state.flipHorizontal) {
+                    // Left side: Stepped Door Height (1981 / 78") | Right side: Total Fixed Height (2794 / 110")
+                    drawDimVertical(ox - 54, doorTopPlotY, oy + ph, `${doorHeightMm}`, theme, 54, true);
+                    drawDimVertical(ox + pw + 54, oy, oy + ph, `${state.height}`, theme, -54, false);
+                } else {
+                    // Mirrored: Left side Fixed Height (2794 / 110") | Right side Stepped Door Height (1981 / 78")
+                    drawDimVertical(ox - 54, oy, oy + ph, `${state.height}`, theme, 54, false);
+                    drawDimVertical(ox + pw + 54, doorTopPlotY, oy + ph, `${doorHeightMm}`, theme, -54, true);
+                }
+            } else {
+                drawDimVertical(totalDimX, oy, oy + ph, state.height.toString(), theme, ox - totalDimX, false);
+            }
 
             // Sub-Bay Dimensions Breakdown
             if (state.showSubDimensions) {
@@ -5195,8 +5393,11 @@ function render() {
                     drawDimVertical(subX, oy + transomH, oy + ph, (state.height - state.transomHeight).toString(), theme, ox - subX, true);
                 }
 
-                // Horizontal Split (Mullion)
-                const hasMullion = ['casement_double_fix_open', 'casement_french', 'fixed_2bay', 'vent_wide_fan'].includes(state.type);
+                // Horizontal Split (Mullion / 27" + 45" Shower Bays)
+                const hasMullion = [
+                    'casement_double_fix_open', 'casement_french', 'fixed_2bay',
+                    'vent_wide_fan', 'shower_2bay_rod', 'shower_2bay_stepped'
+                ].includes(state.type);
                 if (hasMullion) {
                     const baseRatio = state.mullionWidth ? Math.min(0.8, Math.max(0.2, state.mullionWidth / state.width)) : 0.5;
                     const splitRatio = state.flipHorizontal ? (1.0 - baseRatio) : baseRatio;
@@ -5632,7 +5833,178 @@ function render() {
         /**
          * Generates and downloads a scalable vector SVG representation of the CAD drawing
          */
+        /**
+         * 1. TRUE VECTOR SVG EXPORT (1:1 Scalable Vector Output)
+         * Replaces placeholder blank rectangle with actual scene-graph serializer
+         */
         function exportSVG() {
+            try {
+                if (!cadScene || cadScene.entities.length === 0) {
+                    render();
+                }
+                const isDark = state.theme === 'dark';
+                const bg = isDark ? '#111827' : '#ffffff';
+                const svgString = cadScene.toSVG({ background: bg, theme: state.theme });
+                DWG_IO.downloadBlob(svgString, `BOQ_${state.code}_${state.width}x${state.height}mm.svg`, 'image/svg+xml;charset=utf-8');
+                showToast('Exported True 1:1 Scalable Vector SVG!');
+            } catch (err) {
+                console.error('SVG export error:', err);
+                showToast('Error exporting SVG: ' + err.message);
+            }
+        }
+
+        /**
+         * 2. AUTOCAD 1:1 METRIC DXF EXPORT (R2018 Standard Format)
+         */
+        function exportDXF() {
+            try {
+                if (!cadScene || cadScene.entities.length === 0) {
+                    render();
+                }
+                const dxfString = cadScene.toDXF();
+                DWG_IO.downloadBlob(dxfString, `BOQ_${state.code}_${state.width}x${state.height}mm.dxf`, 'application/dxf');
+                showToast('Exported AutoCAD 1:1 Metric DXF Drawing!');
+            } catch (err) {
+                console.error('DXF export error:', err);
+                showToast('Error exporting DXF: ' + err.message);
+            }
+        }
+
+        /**
+         * 3. OPEN & PARSE NATIVE .DWG / .DXF DRAWINGS
+         */
+        async function handleOpenCadFile(file) {
+            if (!file) return;
+            showToast(`Opening ${file.name}...`);
+            try {
+                let result;
+                if (file.name.toLowerCase().endsWith('.dxf')) {
+                    const text = await file.text();
+                    result = DWG_IO.parseDXF(text, cadScene);
+                } else {
+                    result = await DWG_IO.loadDWGBinary(file, cadScene);
+                }
+                showToast(`Loaded ${result.entityCount} entities from ${file.name}!`);
+                switchStudioMode('cad');
+                render();
+            } catch (err) {
+                console.error('CAD file load error:', err);
+                alert('Could not open CAD drawing: ' + err.message);
+            }
+        }
+
+        /**
+         * 4. EXTRACT CAD ELEVATION TO BOQ SCHEDULE CARD
+         */
+        function extractSelectedToBOQ() {
+            try {
+                // Find selected entities or all custom imported entities
+                let targets = cadScene.entities.filter(e => e.selected);
+                if (targets.length === 0) {
+                    targets = cadScene.entities.filter(e => e.isCustom);
+                }
+                if (targets.length === 0) {
+                    targets = cadScene.entities;
+                }
+
+                if (targets.length === 0) {
+                    showToast('Draw an elevation or open a DWG/DXF first to extract!');
+                    return;
+                }
+
+                const newCard = DWG_IO.extractElevationToBOQ(targets, { mark: 'W_DWG_' + (project.items.length + 1) });
+                project.items.push(newCard);
+                project.activeId = newCard.id;
+                saveProjectToStorage();
+                renderCardsList();
+                selectCard(newCard.id);
+                switchStudioMode('bim');
+                showToast(`Extracted Elevation Card: ${newCard.code} (${newCard.width} × ${newCard.height} mm)!`);
+            } catch (err) {
+                alert('Extraction note: ' + err.message);
+            }
+        }
+
+        /**
+         * 5. WORKSPACE MODE CONTROLLER (BIM Designer | CAD Studio | BOQ Cutlist)
+         */
+        function switchStudioMode(mode) {
+            activeStudioMode = mode;
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-mode') === mode);
+            });
+
+            const sidebar = document.querySelector('.sidebar');
+            const ribbon = document.getElementById('cadRibbonBar');
+            const boqView = document.getElementById('boqScheduleView');
+
+            if (mode === 'bim') {
+                if (sidebar) sidebar.style.display = 'flex';
+                if (ribbon) ribbon.style.display = 'flex';
+                if (boqView) boqView.classList.remove('active');
+            } else if (mode === 'cad') {
+                if (sidebar) sidebar.style.display = 'none'; // Maximize viewport for AutoCAD drafting
+                if (ribbon) ribbon.style.display = 'flex';
+                if (boqView) boqView.classList.remove('active');
+                showToast('CAD Studio Mode: Drafting tools active (Line, Rect, Dim, OSNAP)');
+            } else if (mode === 'boq') {
+                if (boqView) {
+                    boqView.classList.add('active');
+                    populateBOQScheduleSheet();
+                }
+            }
+            render();
+        }
+
+        /**
+         * Populates full BOQ Schedule & Cutlist View (Mode 3)
+         */
+        function populateBOQScheduleSheet() {
+            const tbody = document.getElementById('boqSheetTableBody');
+            if (!tbody) return;
+
+            let totalQty = 0;
+            let totalAreaSqFt = 0;
+            let totalWeightKg = 0;
+            let totalLinearProfilesM = 0;
+
+            tbody.innerHTML = project.items.map((it, idx) => {
+                const qty = parseInt(it.qty, 10) || 1;
+                const areaSqFt = ((it.width * it.height) / 1000000) * 10.76391;
+                const totArea = areaSqFt * qty;
+                const weight = (it.weight || (areaSqFt * 1.95)) * qty;
+                const perimeterM = ((it.width * 2 + it.height * 2) / 1000) * qty;
+
+                totalQty += qty;
+                totalAreaSqFt += totArea;
+                totalWeightKg += weight;
+                totalLinearProfilesM += perimeterM;
+
+                return `
+                    <tr>
+                        <td style="font-weight:700; color:var(--text-muted);">#${idx + 1}</td>
+                        <td style="font-weight:700; color:#38bdf8;">${it.code}</td>
+                        <td>${getTypeName(it.type)}</td>
+                        <td>${it.width} mm</td>
+                        <td>${it.height} mm</td>
+                        <td style="font-weight:700; color:#10b981;">${qty}</td>
+                        <td>${areaSqFt.toFixed(2)}</td>
+                        <td style="font-weight:700;">${totArea.toFixed(2)}</td>
+                        <td>${weight.toFixed(1)} KG</td>
+                        <td><span style="font-size:0.72rem; color:#94a3b8;">${it.profileSeries || 'OKOTECH O7'} (${it.colorName || 'BLACK'})</span></td>
+                        <td><span style="font-size:0.72rem; color:#38bdf8;">${it.glassType || '5mm Clear'}</span></td>
+                    </tr>
+                `;
+            }).join('');
+
+            // Update summary cards
+            document.getElementById('boqTotalUnits').textContent = totalQty;
+            document.getElementById('boqTotalArea').textContent = totalAreaSqFt.toFixed(2) + ' Sq.Ft';
+            document.getElementById('boqTotalWeight').textContent = totalWeightKg.toFixed(1) + ' KG';
+            document.getElementById('boqTotalProfiles').textContent = totalLinearProfilesM.toFixed(1) + ' R.Mtr';
+        }
+
+        function _oldExportSVG() {
             const w = state.width;
             const h = state.height;
             const isDark = state.theme === 'dark';
@@ -5759,309 +6131,10 @@ function render() {
          * and full multi-column BOQ schedules.
          */
         function parseCsvText(rawText, defaultType, defaultColor, unitMode) {
-            if (!rawText || typeof rawText !== 'string') return [];
-            const defType = defaultType || 'casement_transom';
-            const defColor = defaultColor || 'BLACK';
-            const uMode = unitMode || (document.getElementById('csvUnitSelect')?.value || 'auto');
-
-            const validTypes = [
-                'casement_single', 'casement_transom', 'casement_double_fix_open', 'casement_french', 'casement_triple',
-                'casement_top_hung', 'tilt_and_turn', 'casement_tower_4bay', 'fixed_window', 'fixed_2bay', 'fixed_3bay',
-                'fixed_georgian', 'casement_door', 'casement_door_midrail', 'double_door_french', 'door_with_transom',
-                'sliding_2track', 'sliding_3track', 'sliding_3track_3sash', 'sliding_4panel', 'sliding_transom',
-                'vent_louver_fan', 'vent_double_bay', 'vent_double_bay_fix', 'vent_wide_fan', 'vent_louver_only', 'vent_fan_only', 'vent_top_hung'
-            ];
-
-            function normalizeType(inputStr) {
-                if (!inputStr || typeof inputStr !== 'string') return defType;
-                const s = inputStr.trim().toLowerCase().replace(/[-_]+/g, ' ');
-                const rawKey = inputStr.trim().toLowerCase().replace(/\s+/g, '_');
-                if (validTypes.includes(rawKey)) return rawKey;
-
-                if (/4\s*panel|oxxo|center\s*open|patio\s*door|sliding\s*door|french\s*slid/i.test(s)) return 'sliding_4panel';
-                if (/3\s*sash/i.test(s)) return 'sliding_3track_3sash';
-                if (/3\s*track|three\s*track|fly\s*mesh/i.test(s)) return 'sliding_3track';
-                if (/2\s*track|two\s*track/i.test(s)) return 'sliding_2track';
-                if (/sliding.*transom|slider.*transom/i.test(s)) return 'sliding_transom';
-                if (/sliding|slider/i.test(s)) return 'sliding_3track';
-
-                if (/tilt.*turn/i.test(s)) return 'tilt_and_turn';
-                if (/tower|4\s*tier|4\s*bay\s*case/i.test(s)) return 'casement_tower_4bay';
-                if (/french\s*door|double\s*door/i.test(s)) return 'double_door_french';
-                if (/mid\s*rail|kick\s*plate/i.test(s)) return 'casement_door_midrail';
-                if (/door.*transom|door.*fanlight/i.test(s)) return 'door_with_transom';
-                if (/door/i.test(s)) return 'casement_door';
-
-                if (/french\s*case|french\s*win/i.test(s)) return 'casement_french';
-                if (/triple|open\s*fix\s*open|3\s*panel/i.test(s)) return 'casement_triple';
-                if (/double.*fix|fix.*open|2\s*panel.*case/i.test(s)) return 'casement_double_fix_open';
-                if (/single\s*case|1\s*panel/i.test(s)) return 'casement_single';
-                if (/awning|top\s*hung/i.test(s)) return 'casement_top_hung';
-                if (/transom|fanlight|top\s*fix/i.test(s)) return 'casement_transom';
-
-                if (/georgian|colonial|grid/i.test(s)) return 'fixed_georgian';
-                if (/3\s*bay\s*fix/i.test(s)) return 'fixed_3bay';
-                if (/2\s*bay\s*fix/i.test(s)) return 'fixed_2bay';
-                if (/fix|picture|glass/i.test(s)) return 'fixed_window';
-
-                if (/louver.*fan|fan.*louver/i.test(s)) return 'vent_louver_fan';
-                if (/double\s*bay.*(fix|glass)/i.test(s) || /vent.*double.*fix/i.test(s) || /v4/i.test(s)) return 'vent_double_bay_fix';
-                if (/double\s*bay\s*vent/i.test(s)) return 'vent_double_bay';
-                if (/wide\s*vent/i.test(s)) return 'vent_wide_fan';
-                if (/louver/i.test(s)) return 'vent_louver_only';
-                if (/exhaust|fan/i.test(s)) return 'vent_fan_only';
-                if (/toilet|vent.*top/i.test(s)) return 'vent_top_hung';
-                if (/vent/i.test(s)) return 'vent_louver_fan';
-
-                if (/case/i.test(s)) return 'casement_transom';
-
-                return defType;
+            if (window.CAD_DB && typeof window.CAD_DB.parseCsv === 'function') {
+                return window.CAD_DB.parseCsv(rawText, defaultType, defaultColor, unitMode);
             }
-
-            function parseCleanNum(val) {
-                if (val === undefined || val === null) return NaN;
-                if (typeof val === 'number') return isNaN(val) ? NaN : val;
-                const s = String(val).trim().replace(/,/g, '');
-                const cleanUnit = s.replace(/\s*(mm|inch|in|ft|feet|sqft|sqm)\s*$/i, '');
-                if (/^-?\d+(\.\d+)?$/.test(cleanUnit)) {
-                    return parseFloat(cleanUnit);
-                }
-                return NaN;
-            }
-
-            function tokenizeLine(line, delim) {
-                const res = [];
-                let cur = '';
-                let inQ = false;
-                for (let j = 0; j < line.length; j++) {
-                    const c = line[j];
-                    if (c === '"' || c === "'") {
-                        if (inQ && line[j + 1] === c) {
-                            cur += c;
-                            j++;
-                        } else {
-                            inQ = !inQ;
-                        }
-                    } else if (!inQ && (delim ? c === delim : (c === ',' || c === '\t' || c === ';'))) {
-                        res.push(cur.trim());
-                        cur = '';
-                    } else {
-                        cur += c;
-                    }
-                }
-                res.push(cur.trim());
-                return res.map(s => s.replace(/^["']|["']$/g, '').trim());
-            }
-
-            const cleanText = rawText.replace(/^\uFEFF/, '');
-            const lines = cleanText.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
-            if (lines.length === 0) return [];
-
-            let delim = ',';
-            const sample = lines.slice(0, 3).join('\n');
-            const tabCount = (sample.match(/\t/g) || []).length;
-            const semiCount = (sample.match(/;/g) || []).length;
-            const commaCount = (sample.match(/,/g) || []).length;
-            if (tabCount > commaCount && tabCount > semiCount) delim = '\t';
-            else if (semiCount > commaCount && semiCount > tabCount) delim = ';';
-
-            const parsedRows = lines.map(l => tokenizeLine(l, delim));
-            const row0 = parsedRows[0];
-            const headerRow = row0.map(h => h.toLowerCase().replace(/[-_]+/g, ' ').trim());
-
-            let colMap = { width: -1, height: -1, mark: -1, type: -1, qty: -1, color: -1, glass: -1, series: -1 };
-            let hasHeader = false;
-
-            headerRow.forEach((col, i) => {
-                if (/^(width|w\b|breadth|b\b|total\s*width|frame\s*width|size\s*w)/i.test(col)) { colMap.width = i; hasHeader = true; }
-                else if (/^(height|h\b|total\s*height|frame\s*height|size\s*h|depth)/i.test(col)) { colMap.height = i; hasHeader = true; }
-                else if (/^(mark|tag|code|item\b|item\s*code|window\s*(?:no|code|mark)|ref\b|reference)/i.test(col)) { colMap.mark = i; hasHeader = true; }
-                else if (/^(type|window\s*type|model|description|item\s*type|system|spec)/i.test(col)) { colMap.type = i; hasHeader = true; }
-                else if (/^(qty|quantity|count|nos?\b|units?|number)/i.test(col)) { colMap.qty = i; hasHeader = true; }
-                else if (/^(color|colour|finish|ral|profile\s*color)/i.test(col)) { colMap.color = i; hasHeader = true; }
-                else if (/^(glass|glazing)/i.test(col)) { colMap.glass = i; hasHeader = true; }
-                else if (/^(series|profile\s*series)/i.test(col)) { colMap.series = i; hasHeader = true; }
-            });
-
-            if (colMap.width !== -1 && colMap.height !== -1) {
-                if (!isNaN(parseCleanNum(row0[colMap.width])) && !isNaN(parseCleanNum(row0[colMap.height]))) {
-                    hasHeader = false;
-                }
-            }
-
-            let startIdx = 0;
-            if (hasHeader) {
-                startIdx = 1;
-            } else {
-                colMap = { width: -1, height: -1, mark: -1, type: -1, qty: -1, color: -1, glass: -1, series: -1 };
-                const f = row0;
-                if (f.length === 2) {
-                    colMap.width = 0;
-                    colMap.height = 1;
-                } else if (f.length >= 3) {
-                    if (isNaN(parseCleanNum(f[0])) && !isNaN(parseCleanNum(f[1])) && !isNaN(parseCleanNum(f[2]))) {
-                        colMap.mark = 0;
-                        colMap.width = 1;
-                        colMap.height = 2;
-                        if (f.length > 3) {
-                            if (isNaN(parseCleanNum(f[3]))) colMap.type = 3;
-                            else colMap.qty = 3;
-                        }
-                        if (f.length > 4) {
-                            if (colMap.type === 3) colMap.qty = 4;
-                            else colMap.type = 4;
-                        }
-                    } else {
-                        colMap.width = 0;
-                        colMap.height = 1;
-                        if (isNaN(parseCleanNum(f[2]))) colMap.type = 2;
-                        else colMap.qty = 2;
-                        if (f.length > 3) {
-                            if (colMap.type === -1) colMap.type = 3;
-                            else if (colMap.qty === -1) colMap.qty = 3;
-                        }
-                    }
-                }
-            }
-
-            const items = [];
-            let itemSeq = 1;
-
-            for (let i = startIdx; i < parsedRows.length; i++) {
-                const row = parsedRows[i];
-                if (!row || row.length === 0 || (row.length === 1 && !row[0])) continue;
-
-                let mark = null;
-                let w = NaN;
-                let h = NaN;
-                let typeStr = null;
-                let qty = 1;
-                let colorStr = null;
-                let glassStr = null;
-                let seriesStr = null;
-
-                if (colMap.width !== -1 && row[colMap.width] !== undefined) w = parseCleanNum(row[colMap.width]);
-                if (colMap.height !== -1 && row[colMap.height] !== undefined) h = parseCleanNum(row[colMap.height]);
-                if (colMap.mark !== -1 && row[colMap.mark]) mark = row[colMap.mark];
-                if (colMap.type !== -1 && row[colMap.type]) typeStr = row[colMap.type];
-                if (colMap.qty !== -1 && row[colMap.qty]) {
-                    const q = parseCleanNum(row[colMap.qty]);
-                    if (!isNaN(q) && q > 0) qty = Math.round(q);
-                }
-                if (colMap.color !== -1 && row[colMap.color]) colorStr = row[colMap.color];
-                if (colMap.glass !== -1 && row[colMap.glass]) glassStr = row[colMap.glass];
-                if (colMap.series !== -1 && row[colMap.series]) seriesStr = row[colMap.series];
-
-                if (isNaN(w) || isNaN(h)) {
-                    const fullLine = lines[i];
-                    const dimMatch = fullLine.match(/(?:([A-Za-z0-9_-]+)[:\s]+)?([0-9,.]+)\s*(?:[xX*×]|\s+by\s+|\s+BY\s+)\s*([0-9,.]+)(?:\s+(?:qty[:\s]*)?(\d+))?/i);
-                    if (dimMatch) {
-                        if (!mark && dimMatch[1]) mark = dimMatch[1];
-                        w = parseCleanNum(dimMatch[2]);
-                        h = parseCleanNum(dimMatch[3]);
-                        if (dimMatch[4]) qty = parseInt(dimMatch[4], 10);
-                        if (!typeStr) {
-                            const rem = fullLine.replace(dimMatch[0], '').trim();
-                            if (rem) {
-                                typeStr = rem;
-                                if (!colorStr && /white|upvc/i.test(rem)) colorStr = 'WHITE';
-                            }
-                        }
-                    }
-                }
-
-                if (isNaN(w) || isNaN(h)) {
-                    const nums = row.map(parseCleanNum).filter(n => !isNaN(n) && n > 0);
-                    if (nums.length >= 2) {
-                        if (nums.length >= 3 && nums[0] < 100 && (nums[1] >= 100 || nums[2] >= 100)) {
-                            w = nums[1];
-                            h = nums[2];
-                            if (nums[3]) qty = Math.round(nums[3]);
-                        } else {
-                            w = nums[0];
-                            h = nums[1];
-                            if (nums[2] && nums[2] <= 100) qty = Math.round(nums[2]);
-                        }
-                    }
-                }
-
-                if (isNaN(w) || isNaN(h) || w <= 0 || h <= 0) continue;
-
-                let finalW = w;
-                let finalH = h;
-                if (uMode === 'feet') {
-                    finalW = Math.round(w * 304.8);
-                    finalH = Math.round(h * 304.8);
-                } else if (uMode === 'inch') {
-                    finalW = Math.round(w * 25.4);
-                    finalH = Math.round(h * 25.4);
-                } else if (uMode === 'auto') {
-                    if (w <= 14 && h <= 14) {
-                        finalW = Math.round(w * 304.8);
-                        finalH = Math.round(h * 304.8);
-                    } else if (w <= 120 && h <= 120 && w >= 15 && h >= 15) {
-                        finalW = Math.round(w * 25.4);
-                        finalH = Math.round(h * 25.4);
-                    } else {
-                        finalW = Math.round(w);
-                        finalH = Math.round(h);
-                    }
-                } else {
-                    finalW = Math.round(w);
-                    finalH = Math.round(h);
-                }
-
-                finalW = Math.max(150, Math.min(finalW, 8000));
-                finalH = Math.max(150, Math.min(finalH, 8000));
-
-                const resolvedType = normalizeType(typeStr);
-                const typeCode = getTypeCode(resolvedType);
-
-                if (!mark || mark.trim().length === 0 || /^W\d+$/i.test(mark.trim())) {
-                    mark = typeCode;
-                }
-
-                let colorKey = defColor;
-                if (colorStr) {
-                    const cs = colorStr.toUpperCase();
-                    if (cs.includes('WHITE')) colorKey = 'WHITE';
-                    else if (cs.includes('ANTH') || cs.includes('GREY') || cs.includes('GRAY')) colorKey = 'ANTHRACITE';
-                    else if (cs.includes('WOOD') || cs.includes('OAK') || cs.includes('BROWN')) colorKey = 'WOODEN';
-                    else colorKey = 'BLACK';
-                }
-
-                const profileColor = colorKey === 'WHITE' ? '#f8fafc' : (colorKey === 'ANTHRACITE' ? '#334155' : (colorKey === 'WOODEN' ? '#78350f' : '#111827'));
-                const resolvedSeries = seriesStr || (resolvedType.includes('sliding') ? 'Veka - I 60 Sliding Series' : 'OKOTECH - O7 CASEMENT SERIES');
-                const resolvedGlass = glassStr || (resolvedType.includes('vent') ? 'Single Glazing / Obscure' : '5mm Clear Toughened');
-                const areaSqFt = (finalW * finalH / 1000000) * 10.7639;
-                const weight = parseFloat((areaSqFt * 1.95).toFixed(2));
-
-                const rawLine = ((lines[i] || '') + ' ' + (typeStr || '')).toLowerCase();
-                const isGeo = /georgian|colonial|astragal|muntin|grid/.test(rawLine) || resolvedType === 'fixed_georgian';
-
-                items.push({
-                    id: 'card_csv_' + Date.now() + '_' + itemSeq + '_' + Math.random().toString(36).substr(2, 4),
-                    code: mark,
-                    type: resolvedType,
-                    width: finalW,
-                    height: finalH,
-                    transomHeight: Math.round(Math.min(finalH * 0.3, 500)),
-                    mullionWidth: Math.round(finalW / 2),
-                    profileColor: profileColor,
-                    colorName: colorKey,
-                    profileSeries: resolvedSeries,
-                    glassType: resolvedGlass,
-                    weight: weight,
-                    qty: qty,
-                    flipHorizontal: false,
-                    georgianBars: isGeo ? 'auto' : 'none',
-                    georgianCols: 2,
-                    georgianRows: 3
-                });
-
-                itemSeq++;
-            }
-            return items;
+            return [];
         }
 
         function exportProjectCSV() {
@@ -6160,6 +6233,302 @@ function render() {
          * ==========================================
          */
         function setupEventListeners() {
+            // Mode Switcher Tabs
+            document.getElementById('btnModeBIM')?.addEventListener('click', () => switchStudioMode('bim'));
+            document.getElementById('btnModeCAD')?.addEventListener('click', () => switchStudioMode('cad'));
+            document.getElementById('btnModeBOQ')?.addEventListener('click', () => switchStudioMode('boq'));
+            document.getElementById('btnCloseBOQView')?.addEventListener('click', () => switchStudioMode('bim'));
+            document.getElementById('btnPrintBOQ')?.addEventListener('click', () => window.print());
+
+            // Top CAD Action Buttons
+            const cadFileInput = document.getElementById('cadFileInput');
+            document.getElementById('btnTopOpenDWG')?.addEventListener('click', () => cadFileInput?.click());
+            document.getElementById('btnRightOpenDWG')?.addEventListener('click', () => cadFileInput?.click());
+            document.getElementById('btnTopExportDXF')?.addEventListener('click', exportDXF);
+            document.getElementById('btnRightExportDXF')?.addEventListener('click', exportDXF);
+            document.getElementById('btnTopExtractBOQ')?.addEventListener('click', extractSelectedToBOQ);
+
+            if (cadFileInput) {
+                cadFileInput.addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+                    if (file) handleOpenCadFile(file);
+                    cadFileInput.value = '';
+                });
+            }
+
+            // CAD Ribbon Drafting Tools
+            const ribbonTools = ['select', 'pan', 'line', 'polyline', 'rect', 'circle', 'dim', 'text'];
+            ribbonTools.forEach(tool => {
+                const btn = document.querySelector(`[data-tool="${tool}"]`);
+                if (btn) {
+                    btn.addEventListener('click', () => {
+                        cadViewport.activeTool = tool;
+                        document.querySelectorAll('.ribbon-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        cadViewport.startPt = null;
+                        cadViewport.tempPt = null;
+                        showToast(`Active Tool: ${tool.toUpperCase()}`);
+                        render();
+                    });
+                }
+            });
+
+            // Toggles: OSNAP, ORTHO, GRID
+            const btnOsnap = document.getElementById('btnToggleOsnap');
+            btnOsnap?.addEventListener('click', () => {
+                cadViewport.osnapEnabled = !cadViewport.osnapEnabled;
+                btnOsnap.classList.toggle('active', cadViewport.osnapEnabled);
+                showToast(cadViewport.osnapEnabled ? 'OSNAP Enabled (Endpoint, Midpoint, Center)' : 'OSNAP Disabled');
+            });
+
+            const btnOrtho = document.getElementById('btnToggleOrtho');
+            btnOrtho?.addEventListener('click', () => {
+                cadViewport.orthoEnabled = !cadViewport.orthoEnabled;
+                btnOrtho.classList.toggle('active', cadViewport.orthoEnabled);
+                showToast(cadViewport.orthoEnabled ? 'ORTHO Locked (0° / 90°)' : 'ORTHO Off');
+            });
+
+            const btnGrid = document.getElementById('btnToggleGrid');
+            btnGrid?.addEventListener('click', () => {
+                cadViewport.gridEnabled = !cadViewport.gridEnabled;
+                btnGrid.classList.toggle('active', cadViewport.gridEnabled);
+                showToast(cadViewport.gridEnabled ? 'Millimeter Grid On' : 'Grid Off');
+            });
+
+            // Modify Tools: Delete & Clear All
+            document.getElementById('btnDeleteSelected')?.addEventListener('click', () => {
+                const count = cadScene.entities.filter(e => e.selected).length;
+                cadScene.entities = cadScene.entities.filter(e => !e.selected);
+                showToast(`Deleted ${count} selected CAD entities`);
+                render();
+            });
+
+            document.getElementById('btnClearCustom')?.addEventListener('click', () => {
+                cadScene.clearAll();
+                showToast('Cleared all custom CAD entities');
+                render();
+            });
+
+            // Command Line Input Handler
+            const cmdInput = document.getElementById('cadCmdInput');
+            cmdInput?.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    const raw = cmdInput.value.trim().toUpperCase();
+                    cmdInput.value = '';
+                    if (!raw) return;
+
+                    if (raw === 'L' || raw === 'LINE') document.getElementById('toolLine')?.click();
+                    else if (raw === 'REC' || raw === 'RECT') document.getElementById('toolRect')?.click();
+                    else if (raw === 'C' || raw === 'CIRCLE') document.getElementById('toolCircle')?.click();
+                    else if (raw === 'DIM' || raw === 'D') document.getElementById('toolDim')?.click();
+                    else if (raw === 'T' || raw === 'TEXT') document.getElementById('toolText')?.click();
+                    else if (raw === 'DEL' || raw === 'E' || raw === 'ERASE') document.getElementById('btnDeleteSelected')?.click();
+                    else if (raw === 'DXF') exportDXF();
+                    else if (raw === 'SVG') exportSVG();
+                    else if (raw === 'BOQ') switchStudioMode('boq');
+                    else if (raw === 'BIM') switchStudioMode('bim');
+                    else if (raw === 'CAD') switchStudioMode('cad');
+                    else if (raw === 'EXTRACT') extractSelectedToBOQ();
+                    else showToast(`Unknown command: ${raw}`);
+                }
+            });
+
+            // Interactive Canvas Mouse Controller
+            function getLogicalMousePos(evt) {
+                const r = canvas.getBoundingClientRect();
+                const dpr = 3;
+                const z = state.zoom || 1.0;
+                let lx = ((evt.clientX - r.left) * (canvas.width / r.width)) / (dpr * z);
+                let ly = ((evt.clientY - r.top) * (canvas.height / r.height)) / (dpr * z);
+
+                // Magnetic OSNAP
+                let snap = null;
+                if (cadViewport.osnapEnabled && cadScene) {
+                    snap = cadScene.findSnapPoint(lx, ly, 14);
+                    if (snap) {
+                        lx = snap.x;
+                        ly = snap.y;
+                    }
+                }
+                cadViewport.activeSnap = snap;
+
+                // Ortho lock
+                if (cadViewport.orthoEnabled && cadViewport.startPt) {
+                    const dx = Math.abs(lx - cadViewport.startPt.x);
+                    const dy = Math.abs(ly - cadViewport.startPt.y);
+                    if (dx > dy) ly = cadViewport.startPt.y;
+                    else lx = cadViewport.startPt.x;
+                }
+
+                return { x: Math.round(lx), y: Math.round(ly) };
+            }
+
+            canvas.addEventListener('mousemove', (e) => {
+                const pos = getLogicalMousePos(e);
+                cadViewport.cursorX = pos.x;
+                cadViewport.cursorY = pos.y;
+
+                // Update coordinate readout
+                const coordEl = document.getElementById('coordReadout');
+                if (coordEl) coordEl.textContent = `X: ${pos.x}.0 mm, Y: ${pos.y}.0 mm`;
+
+                if (cadViewport.isPanning) {
+                    const dx = e.clientX - cadViewport.panStartX;
+                    const dy = e.clientY - cadViewport.panStartY;
+                    canvasWrapper.style.transform = `translate(${dx}px, ${dy}px)`;
+                    return;
+                }
+
+                if (cadViewport.startPt) {
+                    cadViewport.tempPt = pos;
+                    render();
+                } else if (cadViewport.activeSnap) {
+                    render();
+                }
+            });
+
+            canvas.addEventListener('mousedown', (e) => {
+                if (e.button === 1 || cadViewport.activeTool === 'pan' || (e.button === 0 && e.spaceKey)) {
+                    // Pan Start
+                    cadViewport.isPanning = true;
+                    cadViewport.panStartX = e.clientX;
+                    cadViewport.panStartY = e.clientY;
+                    canvas.style.cursor = 'grab';
+                    return;
+                }
+
+                if (e.button !== 0) return; // Only process left click for drafting
+                const pos = getLogicalMousePos(e);
+
+                if (cadViewport.activeTool === 'select') {
+                    const hit = cadScene.hitTest(pos.x, pos.y, 8);
+                    if (hit) {
+                        if (!e.shiftKey) {
+                            cadScene.entities.forEach(ent => { if (ent !== hit) ent.selected = false; });
+                        }
+                        hit.selected = !hit.selected;
+                        showToast(`Selected: ${hit.type} [${hit.layer}]`);
+                    } else if (!e.shiftKey) {
+                        cadScene.entities.forEach(ent => ent.selected = false);
+                    }
+                    render();
+                } else if (cadViewport.activeTool === 'line') {
+                    if (!cadViewport.startPt) {
+                        cadViewport.startPt = pos;
+                    } else {
+                        cadScene.addEntity(new CAD_CORE.LineEntity({
+                            x1: cadViewport.startPt.x, y1: cadViewport.startPt.y,
+                            x2: pos.x, y2: pos.y,
+                            layer: 'A-DRAFT', color: '#22c55e', strokeWidth: 2.0, isCustom: true
+                        }));
+                        cadViewport.startPt = null;
+                        cadViewport.tempPt = null;
+                        render();
+                    }
+                } else if (cadViewport.activeTool === 'rect') {
+                    if (!cadViewport.startPt) {
+                        cadViewport.startPt = pos;
+                    } else {
+                        cadScene.addEntity(new CAD_CORE.RectEntity({
+                            x: Math.min(cadViewport.startPt.x, pos.x),
+                            y: Math.min(cadViewport.startPt.y, pos.y),
+                            w: Math.abs(pos.x - cadViewport.startPt.x),
+                            h: Math.abs(pos.y - cadViewport.startPt.y),
+                            layer: 'A-DRAFT', color: '#22c55e', strokeWidth: 2.0, isCustom: true
+                        }));
+                        cadViewport.startPt = null;
+                        cadViewport.tempPt = null;
+                        render();
+                    }
+                } else if (cadViewport.activeTool === 'circle') {
+                    if (!cadViewport.startPt) {
+                        cadViewport.startPt = pos;
+                    } else {
+                        const r = Math.round(Math.hypot(pos.x - cadViewport.startPt.x, pos.y - cadViewport.startPt.y));
+                        cadScene.addEntity(new CAD_CORE.CircleEntity({
+                            cx: cadViewport.startPt.x, cy: cadViewport.startPt.y, r: r,
+                            layer: 'A-DRAFT', color: '#22c55e', strokeWidth: 2.0, isCustom: true
+                        }));
+                        cadViewport.startPt = null;
+                        cadViewport.tempPt = null;
+                        render();
+                    }
+                } else if (cadViewport.activeTool === 'dim') {
+                    if (!cadViewport.dimP1) {
+                        cadViewport.dimP1 = pos;
+                        showToast('DIM: Click second point');
+                    } else {
+                        const p1 = cadViewport.dimP1;
+                        const p2 = pos;
+                        const isVert = Math.abs(p2.y - p1.y) > Math.abs(p2.x - p1.x);
+                        const dist = isVert ? Math.abs(p2.y - p1.y) : Math.abs(p2.x - p1.x);
+                        const dimOffset = isVert ? Math.min(p1.x, p2.x) - 40 : Math.max(p1.y, p2.y) + 40;
+
+                        cadScene.addEntity(new CAD_CORE.DimensionEntity({
+                            x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y,
+                            isVertical: isVert, dimPos: dimOffset,
+                            text: dist + ' mm', layer: 'A-ANNO-DIMS', color: '#ef4444', isCustom: true
+                        }));
+                        cadViewport.dimP1 = null;
+                        cadViewport.startPt = null;
+                        cadViewport.tempPt = null;
+                        showToast(`Dimension added: ${dist} mm`);
+                        render();
+                    }
+                } else if (cadViewport.activeTool === 'text') {
+                    const txt = prompt('Enter CAD Text Annotation:');
+                    if (txt) {
+                        cadScene.addEntity(new CAD_CORE.TextEntity({
+                            x: pos.x, y: pos.y, text: txt, height: 16,
+                            layer: 'A-ANNO-TEXT', color: '#f8fafc', isCustom: true
+                        }));
+                        render();
+                    }
+                }
+            });
+
+            window.addEventListener('mouseup', () => {
+                if (cadViewport.isPanning) {
+                    cadViewport.isPanning = false;
+                    canvas.style.cursor = 'default';
+                }
+            });
+
+            // Smooth Mouse Wheel Zoom-to-Cursor
+            const viewportEl = document.getElementById('viewport');
+            viewportEl?.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const delta = e.deltaY < 0 ? 0.08 : -0.08;
+                state.zoom = Math.max(0.3, Math.min(3.5, +(state.zoom + delta).toFixed(2)));
+                const zoomVal = document.getElementById('zoomValue');
+                if (zoomVal) zoomVal.textContent = Math.round(state.zoom * 100) + '%';
+                render();
+            }, { passive: false });
+
+            // Keyboard Shortcuts: ESC, L, REC, C, DEL, F8
+            window.addEventListener('keydown', (e) => {
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+                const k = e.key.toUpperCase();
+                if (e.key === 'Escape') {
+                    cadViewport.activeTool = 'select';
+                    cadViewport.startPt = null;
+                    cadViewport.tempPt = null;
+                    cadViewport.dimP1 = null;
+                    document.querySelectorAll('.ribbon-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-tool') === 'select'));
+                    showToast('Tool Cancelled (Select Active)');
+                    render();
+                } else if (k === 'L') {
+                    document.getElementById('toolLine')?.click();
+                } else if (k === 'C') {
+                    document.getElementById('toolCircle')?.click();
+                } else if (k === 'Delete' || k === 'Backspace') {
+                    document.getElementById('btnDeleteSelected')?.click();
+                } else if (e.key === 'F8') {
+                    e.preventDefault();
+                    document.getElementById('btnToggleOrtho')?.click();
+                }
+            });
+            
             // Sidebar Navigation Tabs
             document.querySelectorAll('.sidebar-tab-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
