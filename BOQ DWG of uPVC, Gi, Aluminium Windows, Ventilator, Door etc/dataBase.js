@@ -11,13 +11,34 @@
     if (typeof define === 'function' && define.amd) {
         define([], factory);
     } else if (typeof module === 'object' && module.exports) {
-        module.exports = factory();
+        var exp = factory();
+        module.exports = exp;
+        if (typeof root !== 'undefined') {
+            root.CAD_DB = exp;
+            root.CAD_DATABASE = exp;
+        }
+        if (typeof global !== 'undefined') {
+            global.CAD_DB = exp;
+            global.CAD_DATABASE = exp;
+        }
+        if (typeof window !== 'undefined') {
+            window.CAD_DB = exp;
+            window.CAD_DATABASE = exp;
+        }
     } else {
-        root.CAD_DB = factory();
-        // Also alias on window for convenient global access
-        root.CAD_DATABASE = root.CAD_DB;
+        var exp = factory();
+        root.CAD_DB = exp;
+        root.CAD_DATABASE = exp;
+        if (typeof window !== 'undefined') {
+            window.CAD_DB = exp;
+            window.CAD_DATABASE = exp;
+        }
+        if (typeof global !== 'undefined') {
+            global.CAD_DB = exp;
+            global.CAD_DATABASE = exp;
+        }
     }
-}(typeof self !== 'undefined' ? self : this, function () {
+}(typeof self !== 'undefined' ? self : (typeof window !== 'undefined' ? window : (typeof global !== 'undefined' ? global : this)), function () {
 
     'use strict';
 
@@ -833,6 +854,83 @@
                 glassType: '10mm Clear Toughened Glass',
                 weight: 105.0,
                 desc: 'Hafele 1-Door + 2-Fixed'
+            },
+            // Slim-profile Glass Partitions (SMG / Ozone / Grayzo)
+            {
+                id: 'SL1',
+                category: 'slim',
+                isPdf: false,
+                name: 'SL1 - SMG Slim 16×45 Single Door + Fixed Panel',
+                type: 'slim_partition_swing',
+                code: 'SL1',
+                width: 1800,
+                height: 2400,
+                transomHeight: 2400,
+                mullionWidth: 800,
+                slimSystem: 'SMG_16_45',
+                profileColor: '#111827',
+                colorName: 'BLACK',
+                profileSeries: 'SMG - Slim Profile 16×45 (SP-16 Series)',
+                glassType: '8mm Clear Toughened Glass',
+                weight: 86.4,
+                desc: 'SMG SP-16 · 800 door + 1000 fixed'
+            },
+            {
+                id: 'SL2',
+                category: 'slim',
+                isPdf: false,
+                name: 'SL2 - Ozone Linea 45×07 2-Panel Sliding Partition',
+                type: 'slim_partition_sliding',
+                code: 'SL2',
+                width: 1800,
+                height: 2400,
+                transomHeight: 2400,
+                mullionWidth: 900,
+                slimSystem: 'OZONE_LINEA',
+                profileColor: '#111827',
+                colorName: 'BLACK',
+                profileSeries: 'Ozone - Linea Slim Frame 45×07',
+                glassType: '8mm Clear Toughened Glass',
+                weight: 86.4,
+                desc: 'Ozone Linea · 900 fixed + 900 sliding'
+            },
+            {
+                id: 'SL3',
+                category: 'slim',
+                isPdf: false,
+                name: 'SL3 - Grayzo Delta 2-Leaf Swing Partition',
+                type: 'slim_partition_double',
+                code: 'SL3',
+                width: 1600,
+                height: 2400,
+                transomHeight: 2400,
+                mullionWidth: 800,
+                slimSystem: 'GRAYZO_DELTA',
+                profileColor: '#111827',
+                colorName: 'BLACK',
+                profileSeries: 'Grayzo - Delta Slim Profile Door System',
+                glassType: '10mm Clear Toughened Glass',
+                weight: 96.0,
+                desc: 'Grayzo Delta · 2 × 800 leaves'
+            },
+            {
+                id: 'SL4',
+                category: 'slim',
+                isPdf: false,
+                name: 'SL4 - SMG Slim 25×45 Fixed Glazed Partition',
+                type: 'slim_partition_fixed',
+                code: 'SL4',
+                width: 2000,
+                height: 2800,
+                transomHeight: 2800,
+                mullionWidth: 1000,
+                slimSystem: 'SMG_25_45',
+                profileColor: '#111827',
+                colorName: 'BLACK',
+                profileSeries: 'SMG - Slim Profile 25×45 (SP-25 Series)',
+                glassType: '10mm Clear Toughened Glass',
+                weight: 140.0,
+                desc: 'SMG SP-25 · fixed glazed partition'
             }
     ];
 
@@ -846,6 +944,143 @@
         { id: 'PROMINANCE_PREMIUM', name: 'Prominance - 2.5 Track Heavy Duty', type: 'sliding', frameDepth: 88, outerThick: 65, sashThick: 72 },
         { id: 'ALU_SLIM', name: 'Minimal Slim Aluminium Profile', type: 'all', frameDepth: 45, outerThick: 45, sashThick: 55 },
         { id: 'HAFELE_FRAMELESS', name: 'HAFELE - Frameless Glass Fittings (Ø19mm Header & SS304 Patch)', type: 'shower', frameDepth: 19, outerThick: 4, sashThick: 0 }
+    ];
+
+    /**
+     * Slim-profile glass partition systems — SMG / Ozone / Grayzo.
+     * Sources: SMG "Slim Profile" catalogue Ed. II (SP-07/16/25 series, hardware codes,
+     * SFS-7000 80 kg & SFS-8400 120 kg floor hinges, 60–80 kg sliding doors);
+     * Ozone Linea 45×07 product data (80 kg, max 1.2 m W × 2.7 m H); Ozone Stealth 45×16;
+     * Grayzo Delta catalogue (12 ft = 3658 mm max height, 4 ft = 1219 mm leaf, GSP/GPST codes).
+     * Where a vendor does not publish a value the entry is marked "app limit".
+     */
+    const SLIM_SYSTEMS = [
+        {
+            id: 'SMG_16_45',
+            brand: 'SMG',
+            name: 'SMG Slim Profile 16×45',
+            seriesLabel: 'SMG - Slim Profile 16×45 (SP-16 Series)',
+            face: 45,
+            depth: 16,
+            glassMm: [8],
+            glassNote: '8 mm glass (SP-16 profile)',
+            configs: 'Fixed / single swing / double swing / openable / 2-panel sliding',
+            maxDoorW: 1100,
+            maxDoorH: 3000,
+            maxDoorKg: 80,
+            maxPanelW: 1100,
+            hardware: 'SP-16-11 vertical · SP-16-22 horizontal · SP-16-12 centre · SP-16-15 openable · SP-SL-Track 35×36.5 · SP-SH-06/07/08 hinges · SFS-7000 floor hinge 80 kg · SP-HL-05 handle',
+            finishes: 'Black Matt · Brush Gold · Brush Rose Gold · Metallic Gold · Brush Champagne',
+            note: 'Door width and height are app limits; sliding hardware is rated 60–80 kg.'
+        },
+        {
+            id: 'SMG_07_45',
+            brand: 'SMG',
+            name: 'SMG Slim Profile 07×45',
+            seriesLabel: 'SMG - Slim Profile 07×45 (SP-07 Series)',
+            face: 45,
+            depth: 17.8,
+            glassMm: [10],
+            glassNote: '10 mm glass (SP-07 profile)',
+            configs: 'Fixed / swing / sliding partition',
+            maxDoorW: 1100,
+            maxDoorH: 3000,
+            maxDoorKg: 80,
+            maxPanelW: 1100,
+            hardware: 'SP-07-11 vertical (45 mm face, 7 mm visible) · SP-07-22 horizontal · SP-07-12 centre · SGB-17 Georgian bar · SP-SL-Track 35×36.5 · SP-SH-06/08 hinges · SP-TB-04 handle',
+            finishes: 'Black Matt · Brush Gold · Brush Rose Gold · Metallic Gold · Brush Champagne',
+            note: 'Ultra-slim 7 mm visible face; door limits are app limits.'
+        },
+        {
+            id: 'SMG_25_45',
+            brand: 'SMG',
+            name: 'SMG Slim Profile 25×45',
+            seriesLabel: 'SMG - Slim Profile 25×45 (SP-25 Series)',
+            face: 45,
+            depth: 25,
+            glassMm: [10, 12],
+            glassNote: '10–12 mm glass (SP-D-10 / SP-D-12 dividers)',
+            configs: 'Swing door / double door / partition / floor-spring door',
+            maxDoorW: 1200,
+            maxDoorH: 3000,
+            maxDoorKg: 120,
+            maxPanelW: 1400,
+            hardware: 'SP-25-01 partition · SP-25-02 openable · SP-25-10 door frame · SFS-8400 floor hinge 120 kg · SHFS-100 hydraulic 80 kg · SP-SH-09 soft-close hinge · SGH-55 pull handle · SP-SL-21/22 lock',
+            finishes: 'Black Matt · Brush Gold · Brush Rose Gold · Metallic Gold · Brush Champagne',
+            note: 'Heavy-duty 25×45 mm section; 120 kg floor hinge rating (SFS-8400).'
+        },
+        {
+            id: 'OZONE_LINEA',
+            brand: 'Ozone',
+            name: 'Ozone Linea Slim Frame 45×07',
+            seriesLabel: 'Ozone - Linea Slim Frame 45×07',
+            face: 45,
+            depth: 7,
+            glassMm: [8, 10],
+            glassNote: '8–10 mm glass (thickness not published by Ozone)',
+            configs: 'Pocket sliding · telescopic 1+2 / 1+3 · synchro 2+2',
+            maxDoorW: 1200,
+            maxDoorH: 2700,
+            maxDoorKg: 80,
+            maxPanelW: 1200,
+            hardware: 'Linea sliding door kit (OSTF7F-PKT-SYS) · top & bottom profile with PVC seal · vertical profile · 3 m top track · pocket support plate 3 m · corner cleat kit',
+            finishes: 'Black Matt · Phantom Grey · Tan Brass · Vintage Brass Brush · Black Luxe Glossy',
+            note: 'Published: max door 1.2 m W × 2.7 m H, 80 kg load.'
+        },
+        {
+            id: 'OZONE_STEALTH',
+            brand: 'Ozone',
+            name: 'Ozone Stealth 45×16',
+            seriesLabel: 'Ozone - Stealth Slim Frame 45×16',
+            face: 45,
+            depth: 16,
+            glassMm: [8, 10],
+            glassNote: '8–10 mm glass (confirm glass with Ozone)',
+            configs: 'Single / double sliding · swing door · fixed partition',
+            maxDoorW: 1200,
+            maxDoorH: 3000,
+            maxDoorKg: 80,
+            maxPanelW: 1200,
+            hardware: 'Stealth top track, roller carriages, concealed hinges and swing-door kit',
+            finishes: 'Ozone Stealth finish range',
+            note: '45×16 mm frontal; vertical span up to ~3 m. Door limits are app limits.'
+        },
+        {
+            id: 'GRAYZO_DELTA',
+            brand: 'Grayzo',
+            name: 'Grayzo Delta System',
+            seriesLabel: 'Grayzo - Delta Slim Profile Door System',
+            face: 45,
+            depth: 16,
+            glassMm: [8, 10],
+            glassNote: '8–10 mm glass (thickness not published by Grayzo)',
+            configs: 'Synchro · telescopic 3/4/5 door · two-way 2+2 / 3+3 / 4+4 · soft close · pocket · swing with floor spring or hinge',
+            maxDoorW: 1219,
+            maxDoorH: 3658,
+            maxDoorKg: 100,
+            maxPanelW: 1219,
+            hardware: 'GSP 601 / 602 / 604 / 605 / 606 · GPST 01 track set',
+            finishes: 'Black · Brush Gold · Champagne',
+            note: 'Published: 12 ft (3658 mm) max height, 4 ft (1219 mm) leaf width; door weight is an app limit.'
+        },
+        {
+            id: 'GRAYZO_LINEA',
+            brand: 'Grayzo',
+            name: 'Grayzo Linea Shower Enclosure',
+            seriesLabel: 'Grayzo - Linea Shower Enclosure (Framed / Frameless)',
+            face: 40,
+            depth: 15,
+            glassMm: [8, 10],
+            glassNote: '8–10 mm toughened glass',
+            configs: 'Framed door · frameless door · fixed side panel',
+            maxDoorW: 900,
+            maxDoorH: 2200,
+            maxDoorKg: 45,
+            maxPanelW: 1200,
+            hardware: 'GPST 01 · GSP 401 / 402 · GSP 601 / 602 · shower hinges and handles',
+            finishes: 'Black · Brush Gold · Chrome · Coffee Brown',
+            note: 'Shower enclosure range; door limits are app limits matched to the 45 kg hinge rule.'
+        }
     ];
 
     /**
@@ -1058,11 +1293,64 @@
     ];
 
     /**
+     * Standard Fenestration Schedule Type Code Mapping
+     * Guarantees each window/door type has its own locked, distinct architectural code
+     */
+    function getTypeCode(type) {
+        const codes = {
+            // Fixed Windows
+            fixed_window: 'FW1',
+            fixed_2bay: 'FW2',
+            fixed_3bay: 'FW3',
+            fixed_georgian: 'FG1',
+            // Casement Windows
+            casement_single: 'CW1',
+            casement_transom: 'CWT',
+            casement_double_fix_open: 'CW2',
+            casement_french: 'FCW',
+            casement_triple: 'CW3',
+            casement_top_hung: 'AW1',
+            tilt_and_turn: 'TT1',
+            casement_tower_4bay: 'CT4',
+            // Sliding Windows & Patio Doors
+            sliding_2track: 'SW2',
+            sliding_3track: 'SW3',
+            sliding_3track_3sash: 'S3S',
+            sliding_4panel: 'PD4',
+            sliding_transom: 'SWT',
+            // Doors
+            casement_door: 'D1',
+            casement_door_midrail: 'MD1',
+            double_door_french: 'FD1',
+            door_with_transom: 'DT1',
+            // Ventilators
+            vent_louver_fan: 'V1',
+            vent_double_bay: 'V2',
+            vent_double_bay_fix: 'V4',
+            vent_wide_fan: 'V3',
+            vent_louver_only: 'VL1',
+            vent_fan_only: 'VF1',
+            vent_top_hung: 'VT1',
+            // Frameless Shower & Glass Partitions
+            shower_2bay_rod: 'SH1',
+            shower_2bay_stepped: 'SH2',
+            shower_3bay_hafele: 'SH3',
+            // Slim-profile Glass Partitions
+            slim_partition_swing: 'SL1',
+            slim_partition_sliding: 'SL2',
+            slim_partition_double: 'SL3',
+            slim_partition_fixed: 'SL4'
+        };
+        return codes[type] || 'CW1';
+    }
+
+    /**
      * Database Public Interface
      */
     return {
         PRESETS: PRESETS,
         PROFILE_SERIES: PROFILE_SERIES,
+        SLIM_SYSTEMS: SLIM_SYSTEMS,
         GLASS_OPTIONS: GLASS_OPTIONS,
         COLOR_FINISHES: COLOR_FINISHES,
         DEFAULT_PROJECT_ITEMS: DEFAULT_PROJECT_ITEMS,
@@ -1071,48 +1359,7 @@
          * Standard Fenestration Schedule Type Code Mapping
          * Guarantees each window/door type has its own locked, distinct architectural code
          */
-        getTypeCode: function (type) {
-            const codes = {
-                // Fixed Windows
-                fixed_window: 'FW1',
-                fixed_2bay: 'FW2',
-                fixed_3bay: 'FW3',
-                fixed_georgian: 'FG1',
-                // Casement Windows
-                casement_single: 'CW1',
-                casement_transom: 'CWT',
-                casement_double_fix_open: 'CW2',
-                casement_french: 'FCW',
-                casement_triple: 'CW3',
-                casement_top_hung: 'AW1',
-                tilt_and_turn: 'TT1',
-                casement_tower_4bay: 'CT4',
-                // Sliding Windows & Patio Doors
-                sliding_2track: 'SW2',
-                sliding_3track: 'SW3',
-                sliding_3track_3sash: 'S3S',
-                sliding_4panel: 'PD4',
-                sliding_transom: 'SWT',
-                // Doors
-                casement_door: 'D1',
-                casement_door_midrail: 'MD1',
-                double_door_french: 'FD1',
-                door_with_transom: 'DT1',
-                // Ventilators
-                vent_louver_fan: 'V1',
-                vent_double_bay: 'V2',
-                vent_double_bay_fix: 'V4',
-                vent_wide_fan: 'V3',
-                vent_louver_only: 'VL1',
-                vent_fan_only: 'VF1',
-                vent_top_hung: 'VT1',
-                // Frameless Shower & Glass Partitions
-                shower_2bay_rod: 'SH1',
-                shower_2bay_stepped: 'SH2',
-                shower_3bay_hafele: 'SH3'
-            };
-            return codes[type] || 'CW1';
-        },
+        getTypeCode: getTypeCode,
 
         /**
          * Get presets filtered by category ('all', 'casement', 'sliding', 'doors', 'ventilator', 'fixed')
@@ -1165,7 +1412,7 @@
                         const parsed = JSON.parse(raw);
                         if (parsed && Array.isArray(parsed.items) && parsed.items.length > 0) {
                             // Reconcile item codes so identical window types always share the exact same code
-                            const getCode = (typeof CAD_DB !== 'undefined' && CAD_DB.getTypeCode) ? CAD_DB.getTypeCode : function (t) { return 'CW1'; };
+                            const getCode = getTypeCode;
                             parsed.items.forEach(function (it) {
                                 it.code = getCode(it.type);
                             });
@@ -1459,7 +1706,7 @@
                 finalH = Math.max(150, Math.min(finalH, 8000));
 
                 const resolvedType = normalizeType(typeStr);
-                const typeCode = (typeof CAD_DB !== 'undefined' && CAD_DB.getTypeCode) ? CAD_DB.getTypeCode(resolvedType) : 'CW1';
+                const typeCode = getTypeCode(resolvedType);
 
                 if (!mark || mark.trim().length === 0 || /^W\d+$/i.test(mark.trim())) {
                     mark = typeCode;

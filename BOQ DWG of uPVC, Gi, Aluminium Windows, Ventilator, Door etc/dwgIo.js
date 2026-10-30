@@ -14,11 +14,18 @@
     if (typeof define === 'function' && define.amd) {
         define(['./cadEngine'], factory);
     } else if (typeof module === 'object' && module.exports) {
-        module.exports = factory(require('./cadEngine'));
+        var exp = factory(require('./cadEngine'));
+        module.exports = exp;
+        if (typeof root !== 'undefined') root.DWG_IO = exp;
+        if (typeof global !== 'undefined') global.DWG_IO = exp;
+        if (typeof window !== 'undefined') window.DWG_IO = exp;
     } else {
-        root.DWG_IO = factory(root.CAD_CORE || root.CAD_ENGINE);
+        var exp = factory(root.CAD_CORE || root.CAD_ENGINE || (typeof window !== 'undefined' ? (window.CAD_CORE || window.CAD_ENGINE) : null));
+        root.DWG_IO = exp;
+        if (typeof window !== 'undefined') window.DWG_IO = exp;
+        if (typeof global !== 'undefined') global.DWG_IO = exp;
     }
-}(typeof self !== 'undefined' ? self : this, function (cadCore) {
+}(typeof self !== 'undefined' ? self : (typeof window !== 'undefined' ? window : (typeof global !== 'undefined' ? global : this)), function (cadCore) {
 
     'use strict';
 
@@ -282,16 +289,18 @@
         }
 
         // Dynamically load LibreDWG WASM script if not already on page
-        try {
-            await loadScript('https://cdn.jsdelivr.net/npm/@mlightcad/libredwg-web@latest/dist/libredwg-web.js');
-            if (window.LibreDWG) {
-                const converter = new window.LibreDWG();
-                await converter.init();
-                const dxfOutput = await converter.dwgToDxf(uint8);
-                return parseDXF(dxfOutput, targetScene);
+        if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+            try {
+                await loadScript('https://cdn.jsdelivr.net/npm/@mlightcad/libredwg-web@latest/dist/libredwg-web.js');
+                if (window.LibreDWG) {
+                    const converter = new window.LibreDWG();
+                    await converter.init();
+                    const dxfOutput = await converter.dwgToDxf(uint8);
+                    return parseDXF(dxfOutput, targetScene);
+                }
+            } catch (wasmErr) {
+                console.warn('[DWG_IO] CDN LibreDWG WASM load note:', wasmErr);
             }
-        } catch (wasmErr) {
-            console.warn('[DWG_IO] CDN LibreDWG WASM load note:', wasmErr);
         }
 
         // Provide informative notice if browser cannot load external WASM module
@@ -307,13 +316,26 @@
         let candidateLines = [];
 
         if (Array.isArray(entitiesOrBbox)) {
-            entitiesOrBbox.forEach(ent => {
-                const b = ent.getBoundingBox();
-                if (b.minX < minX) minX = b.minX;
-                if (b.minY < minY) minY = b.minY;
-                if (b.maxX > maxX) maxX = b.maxX;
-                if (b.maxY > maxY) maxY = b.maxY;
-                if (ent.type === 'LINE') candidateLines.push(ent);
+            // Filter out dimension and annotation text entities so dims/ticks outside frame do not inflate elevation bounds
+            const structuralEntities = entitiesOrBbox.filter(ent => {
+                if (!ent) return false;
+                const layer = (ent.layer || '').toUpperCase();
+                const type = (ent.type || '').toUpperCase();
+                if (layer.includes('DIM') || layer.includes('ANNO') || type === 'DIMENSION' || type === 'TEXT' || type === 'MTEXT') {
+                    return false;
+                }
+                return true;
+            });
+            const targetEnts = structuralEntities.length > 0 ? structuralEntities : entitiesOrBbox;
+            targetEnts.forEach(ent => {
+                if (typeof ent.getBoundingBox === 'function') {
+                    const b = ent.getBoundingBox();
+                    if (b.minX < minX) minX = b.minX;
+                    if (b.minY < minY) minY = b.minY;
+                    if (b.maxX > maxX) maxX = b.maxX;
+                    if (b.maxY > maxY) maxY = b.maxY;
+                    if (ent.type === 'LINE') candidateLines.push(ent);
+                }
             });
         } else if (entitiesOrBbox && typeof entitiesOrBbox === 'object') {
             minX = entitiesOrBbox.minX || 0;
@@ -399,6 +421,7 @@
      */
     function loadScript(src) {
         return new Promise((resolve, reject) => {
+            if (typeof document === 'undefined') return reject(new Error('DOM document not available'));
             if (document.querySelector(`script[src="${src}"]`)) {
                 return resolve();
             }
@@ -414,6 +437,10 @@
      * Client-Side File Download helper
      */
     function downloadBlob(content, fileName, mimeType) {
+        if (typeof window === 'undefined' || typeof document === 'undefined') {
+            console.warn('[DWG_IO] downloadBlob is only available in browser environments.');
+            return;
+        }
         const blob = new Blob([content], { type: mimeType });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');

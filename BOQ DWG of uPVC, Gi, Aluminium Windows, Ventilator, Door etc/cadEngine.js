@@ -16,13 +16,30 @@
     if (typeof define === 'function' && define.amd) {
         define([], factory);
     } else if (typeof module === 'object' && module.exports) {
-        module.exports = factory();
+        var exp = factory();
+        module.exports = exp;
+        if (typeof root !== 'undefined') {
+            root.CAD_CORE = exp;
+            root.CAD_ENGINE = exp;
+        }
+        if (typeof global !== 'undefined') {
+            global.CAD_CORE = exp;
+            global.CAD_ENGINE = exp;
+        }
     } else {
-        root.CAD_CORE = factory();
-        // Also alias on window for convenient global access
-        root.CAD_ENGINE = root.CAD_CORE;
+        var exp = factory();
+        root.CAD_CORE = exp;
+        root.CAD_ENGINE = exp;
+        if (typeof window !== 'undefined') {
+            window.CAD_CORE = exp;
+            window.CAD_ENGINE = exp;
+        }
+        if (typeof globalThis !== 'undefined') {
+            globalThis.CAD_CORE = exp;
+            globalThis.CAD_ENGINE = exp;
+        }
     }
-}(typeof self !== 'undefined' ? self : this, function () {
+}(typeof self !== 'undefined' ? self : (typeof window !== 'undefined' ? window : this), function () {
 
     'use strict';
 
@@ -1259,7 +1276,7 @@
                 const layer = this.layers[layerKey];
                 if (!layer.visible) return;
 
-                const layerEnts = this.entities.filter(e => e.layer === layerKey && e.visible);
+                const layerEnts = this.entities.filter(e => e.layer === layerKey && e.visible && (!viewport.onlyCustom || e.isCustom));
                 layerEnts.forEach(ent => {
                     this._renderEntity(ctx, ent, layer, theme);
                 });
