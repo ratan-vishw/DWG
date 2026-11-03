@@ -65,7 +65,7 @@ DWG/
 ## ⚡ Key Capabilities Implemented (Phases 1 & 2)
 
 ### 1. De-duplicated Architecture
-- **Single Source of Truth**: All ~810 lines of duplicated `PRESETS`, `getTypeCode()`, and `parseCsvText()` were removed from `Index.html`. Everything is centralized in `dataBase.js` (`CAD_DB`).
+- **Single Source of Truth**: All duplicated presets and catalog data are centralized in `dataBase.js` (`CAD_DB`), including uPVC (OKOTECH, Veka, REHAU, Prominance), frameless glass shower enclosures (Häfele), and slim-profile architectural systems (SMG Slim Smart Systems Catalogue Ed-II, Ozone Linea/Stealth, Grayzo Delta).
 
 ### 2. Live Vector CAD Scene Graph (`cadEngine.js`)
 - Replaced imperative pixel painting with a live **Vector CAD Scene Graph** (`CADScene`).
